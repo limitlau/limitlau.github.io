@@ -229,9 +229,17 @@
 <p>在文件所在目录打开cmd命令行窗口，输入命令 <code>msiexec.exe /i jdk-17_windows-x64_bin.msi </code>，效果与双击安装程序一致。</p>
 </li>
 </ul>
-<p>安装过程中会将下图中的四个文件复制到C:\Program Files\Common Files\Oracle\Java\javapath路径，此路径会被自动配置到系统变量中的Path变量中</p>
+<p>上述两种方式在安装过程中会将下图中的四个文件复制到C:\Program Files\Common Files\Oracle\Java\javapath路径，此路径会被自动配置到系统变量中的Path变量中</p>
 <p><img src="https://cdn.staticaly.com/gh/limitlau/blog_pictures/main/img/javapath.png" alt="javapath"></p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.zip">.zip安装</a></p>
+<p>下载完成后，解压完成安装</p>
+</li>
+</ul>
+<p>环境配置（可选）：打开jdk17文件夹的bin目录，复制全路径，配置到Path变量中</p>
+<p>​	在开始中搜索编辑系统环境变量  &gt;&gt;  点击环境变量  &gt;&gt; 在系统变量中找到Path变量  &gt;&gt;  双击或点击编辑后新建</p>
 <p>安装完成后打开cmd命令行窗口输入java -version和javac验证安装，正确显示安装成功，安装成功后可将下载的安装程序删除。</p>
+<p>.zip安装若未配置环境变量要将cmd路径切换为bin目录</p>
 <p><img src="https://cdn.staticaly.com/gh/limitlau/blog_pictures/main/img/%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A3%80%E6%9F%A5%E5%AE%89%E8%A3%85.png" alt="命令行检查安装"></p>
 <h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><ul>
 <li><p>在Windows控制面板中的添加或删除程序，找到应用后卸载</p>
