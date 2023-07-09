@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
-    <meta name="description" content="list" />
+    <meta name="description" content="VIM编辑器操作" />
     <meta name="hexo-theme-A4" content="v1.6.9" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
     <title>Lau | Learning..</title>
@@ -157,8 +157,8 @@
             
             
             
-                <div class="shadow-drop-2-top paper-main">
-                     
+                <div class="shadow-drop-2-bottom paper-main">
+                    
 <div class="header">
     <div class="header-container">
         <img style="
@@ -179,13 +179,7 @@
             
         
             
-                <li><i>
-                    
-                        <u>
-                            <a  href="/list/">文章</a>
-                        </u>
-                    
-                </i></li>
+                <li><a href="/list/">文章</a></li>
             
         
             
@@ -202,161 +196,203 @@
         
     </ul>
 </div> 
-                     <div class="archive-list">
-  <ul class="archive">
-      
+        
+                    
+                    
 
-      
-      
-      
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
 
+    
+        <div class="post-main-title">
+            VIM编辑器操作
+        </div>
       
+    
 
-      
-      
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%84%E6%A8%A1%E5%BC%8F"><span class="post-toc-text">常规模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F"><span class="post-toc-text">编辑模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="post-toc-text">命令模式</span></a></li></ol>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="常规模式"><a href="#常规模式" class="headerlink" title="常规模式"></a>常规模式</h2><p>在命令行使用vim命令打开文件进入文本编辑器即为默认的常规模式</p>
+<table>
+<thead>
+<tr>
+<th align="center">指令</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">num shift+g</td>
+<td align="center">移动到第num行（不指定num移动到最后一行）</td>
+</tr>
+<tr>
+<td align="center">dd</td>
+<td align="center">删除当前行</td>
+</tr>
+<tr>
+<td align="center">d num d</td>
+<td align="center">删除从当前行开始的num行</td>
+</tr>
+<tr>
+<td align="center">dw</td>
+<td align="center">删除一个词及之后的空格</td>
+</tr>
+<tr>
+<td align="center">p</td>
+<td align="center">复制的词粘贴在光标前，复制的行粘贴到下一行</td>
+</tr>
+<tr>
+<td align="center">u</td>
+<td align="center">撤销上一步</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">剪切字母</td>
+</tr>
+<tr>
+<td align="center">X</td>
+<td align="center">剪切前一个字母</td>
+</tr>
+<tr>
+<td align="center">yy</td>
+<td align="center">复制当前行</td>
+</tr>
+<tr>
+<td align="center">y num y</td>
+<td align="center">复制从当前行开始的num行</td>
+</tr>
+<tr>
+<td align="center">yw</td>
+<td align="center">复制一个词</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">移动到行头</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="center">移动到行尾</td>
+</tr>
+</tbody></table>
+<h2 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h2><p>在常规模式下键入a、i、o或A、I、O进入编辑模式，按Esc退出</p>
+<table>
+<thead>
+<tr>
+<th align="center">指令</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">a</td>
+<td align="center">效果等同于将光标向后移动一格后再键入i</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="center">从行尾开始编辑</td>
+</tr>
+<tr>
+<td align="center">i</td>
+<td align="center">在当前光标之前编辑</td>
+</tr>
+<tr>
+<td align="center">I</td>
+<td align="center">从行首开始编辑</td>
+</tr>
+<tr>
+<td align="center">o</td>
+<td align="center">在下方插入新行</td>
+</tr>
+<tr>
+<td align="center">O</td>
+<td align="center">在上方插入新行</td>
+</tr>
+</tbody></table>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><p>在常规模式下键入:、&#x2F;、?进入命令模式，输入命令后Esc取消，回车确认</p>
+<table>
+<thead>
+<tr>
+<th align="center">指令</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">:q</td>
+<td align="center">退出</td>
+</tr>
+<tr>
+<td align="center">:w</td>
+<td align="center">保存</td>
+</tr>
+<tr>
+<td align="center">:!</td>
+<td align="center">强制执行</td>
+</tr>
+<tr>
+<td align="center">&#x2F; keywords</td>
+<td align="center">根据keywords查找，n下一个，N上一个</td>
+</tr>
+<tr>
+<td align="center">:noh</td>
+<td align="center">取消高亮</td>
+</tr>
+<tr>
+<td align="center">:set nu | nonu</td>
+<td align="center">显示&#x2F;不显示 行号</td>
+</tr>
+<tr>
+<td align="center">:%s&#x2F;old&#x2F;new</td>
+<td align="center">内容替换，old替换为new</td>
+</tr>
+</tbody></table>
 
-      
+    </div>
 
-      
+    <div class="post-meta">
+        <i>
         
-        <li>
-          <span class="year-font-color">2023[9]
-             😎 
-          </span>
-        </li>
+            <span>2023-07-09</span>
+            
+                <span>该篇文章被 Limit Lau</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Linux/'>
+                            Linux
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%BA%94%E7%94%A8/'>
+                            应用
+                        </a>
+                    
+                </span>
+            
         
+        </i>
+    </div>
+    
         
-          
-          <li>
-            <span class="archive-date">07/09 
-            </span>
-            <div class="archive-main">
-              
-                <a class="archive-title"  href="/categories/应用/">
-                  应用 
-                </a> | 
-              
-                <a class="archive-title" href="/2023/07/09/Vim%E7%BC%96%E8%BE%91%E5%99%A8/">VIM编辑器操作</a>
-            </div>
-          </li>
-        
-          
-          <li>
-            <span class="archive-date">07/04 
-            </span>
-            <div class="archive-main">
-              
-                <a class="archive-title"  href="/categories/环境搭建/">
-                  环境搭建 
-                </a> | 
-              
-                <a class="archive-title" href="/2023/07/04/JDK17%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/">Windows中JDK17的安装与卸载</a>
-            </div>
-          </li>
-        
-          
-          <li>
-            <span class="archive-date">06/30 
-            </span>
-            <div class="archive-main">
-              
-                <a class="archive-title"  href="/categories/英语/">
-                  英语 
-                </a> | 
-              
-                <a class="archive-title" href="/2023/06/30/%E8%80%81%E4%BA%BA%E4%B8%8E%E6%B5%B7/">The Old Man and the Sea（孩子不懂事，翻译着玩的🤣）</a>
-            </div>
-          </li>
-        
-          
-          <li>
-            <span class="archive-date">06/26 
-            </span>
-            <div class="archive-main">
-              
-                <a class="archive-title"  href="/categories/诗词歌赋/">
-                  诗词歌赋 
-                </a> | 
-              
-                <a class="archive-title" href="/2023/06/26/%E5%B2%B3%E9%98%B3%E6%A5%BC%E8%AE%B0/">《岳阳楼记》</a>
-            </div>
-          </li>
-        
-          
-          <li>
-            <span class="archive-date">06/22 
-            </span>
-            <div class="archive-main">
-              
-                <a class="archive-title"  href="/categories/英语/">
-                  英语 
-                </a> | 
-              
-                <a class="archive-title" href="/2023/06/22/%E5%A2%A8%E5%A2%A8%E5%AE%98%E6%96%B9%E6%AF%8F%E6%97%A5%E5%88%86%E4%BA%AB/">墨墨官方每日分享</a>
-            </div>
-          </li>
-        
-          
-          <li>
-            <span class="archive-date">06/19 
-            </span>
-            <div class="archive-main">
-              
-                <a class="archive-title"  href="/categories/计算机科学/">
-                  计算机科学 
-                </a> | 
-              
-                <a class="archive-title" href="/2023/06/19/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88%E7%9C%9F%E9%A2%98%E7%AC%94%E8%AE%B0/">软件设计师真题笔记</a>
-            </div>
-          </li>
-        
-          
-          <li>
-            <span class="archive-date">06/16 
-            </span>
-            <div class="archive-main">
-              
-                <a class="archive-title"  href="/categories/英语/">
-                  英语 
-                </a> | 
-              
-                <a class="archive-title" href="/2023/06/16/%E7%BC%A9%E7%95%A5%E8%AF%8D/">缩略词及其翻译</a>
-            </div>
-          </li>
-        
-          
-          <li>
-            <span class="archive-date">06/13 
-            </span>
-            <div class="archive-main">
-              
-                <a class="archive-title"  href="/categories/编程语言/">
-                  编程语言 
-                </a> | 
-              
-                <a class="archive-title" href="/2023/06/13/Python%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">Python程序语言设计</a>
-            </div>
-          </li>
-        
-          
-          <li>
-            <span class="archive-date">06/11 
-            </span>
-            <div class="archive-main">
-              
-                <a class="archive-title"  href="/categories/计算机科学/">
-                  计算机科学 
-                </a> | 
-              
-                <a class="archive-title" href="/2023/06/11/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">软件设计师备考笔记</a>
-            </div>
-          </li>
-        
-      
-  </ul>
+
+     
 </div>
- 
-                     <div class="footer">
+
+
+
+                    
+                    
+                    <div class="footer">
     
         <span> 
             © 2019-2023 China 
