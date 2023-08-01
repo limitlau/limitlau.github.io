@@ -218,7 +218,7 @@
         
             
         
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>​	</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
 <p><strong>选项&#x2F;数据</strong></p>
 <p>data	</p>
 <p>以_或$开头的property不会被Vue实例代理，因为它们可能和Vue内置的propert、API方法冲突。</p>
@@ -229,6 +229,7 @@
 <p>watch</p>
 <p>一个对象，键是需要观察的表达式，值是对应回调函数。值也可以是方法名，或者包含选项的对象。Vue实例将会在实例化时调用$watch()，遍历watch对象的每一个property。</p>
 <p>若用箭头函数来定义watcher函数，this将不会按照期望指向Vue实例，因为箭头函数绑定了父级作用域的上下文。</p>
+<p>当需要在数据变化时执行异步或开销较大的操作时，通过watch选项提供的通用方法来响应数据的变化。</p>
 <p>​	</p>
 <p><strong>选项 &#x2F; DOM</strong></p>
 <p>render()渲染函数接收一个createElement方法作为第一个参数用来创建VNode，若Vue选项中的render函数存在，Vue构造函数不会从template选项或通过el选项指定的挂载元素中提取出的HTML模板编译渲染函数。</p>
@@ -360,7 +361,33 @@ function proxy(target, sourceKey, key) &#123;
 <p><strong>Vuex</strong></p>
 <p>Vuex是一个专为Vue.js应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。</p>
 <p><img src="https://v3.vuex.vuejs.org/vuex.png"></p>
-<p>​	</p>
+<p>存储在Vuex中的数据和Vue实例中的<code>data</code>遵循相同的规则</p>
+<p>由于Vuex的状态存储是响应式的，从store实例中读取状态最简单的方法就是在计算属性中返回某个状态</p>
+<p>Vuex通过<code>store</code>选项，提供了一种机制状态从根组件“注入”到每一个子组件中（需调用&#96;&#96;Vue.use(Vuex)<code>)。通过在根实例中注册</code>store<code>选项，该store实例会注入到根组件下所有子组件中，且子组件能通过</code>this.$store&#96;访问到。</p>
+<p>Vuex允许在store中定义“getter”（可以认为是store的计算属性）。像计算属性一样，getter的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了变化才会被重新计算。</p>
+<p>Getter接收state作为其第一个参数，可以接受其他getter作为第二个参数</p>
+<p>Getter在通过属性访问时是作为Vue的响应式系统的一部分缓存其中的，在通过方法访问时，每次都会去进行调用，而不会缓存结果。</p>
+<p>更改Vuex的store中的状态的唯一方法是提交mutation。</p>
+<p>在Vuex中，mutation都是同步事务，mutation必须是同步函数。</p>
+<p>Action提交的是mutation，而不是直接变更状态。Action可以包含任意异步操作。</p>
+<p>Action函数接受一个与store实例具有相同方法和属性的context对象，可通过<code>context.commit</code>提交一个mutation，或通过<code>context.state</code>和<code>context.getters</code>来获取state和getters。</p>
+<p>Vuex允许将store分割成模块，以解决应用变得复杂时，store对象可能变得相当臃肿的问题。</p>
+<p>对于模块内部的mutation和getter，接收的第一个参数是模块的局部状态对象。对于模块内部的action，局部状态通过<code>context.state</code>暴露出来。根节点状态则为<code>context.rootState</code>。对于模块内部的getter，根节点状态会作为第三个参数暴露出来。</p>
+<p>默认情况下，模块内部的action、mutation和getter是注册在全局命名空间的，这样使得多个模块能够对同一mutation或action做出响应。如果希望模块有更高的封装度和复用性，可添加<code>namespaced: true</code>的方式使其成为带命名空间地模块。当模块被注册后，它的所有getter、action及mutation都会自动根据模块注册的路径调整命名。</p>
+<p>在使用模块内容时不需要在同一模块内额外添加空间名前缀。</p>
+<p>如果希望使用全局state和getter，<code>rootState</code>和<code>rootGetters</code>会作为第三和第四参数传入getter，也会通过context对象的属性传入action。</p>
+<p>若需要在全局命名空间内分发action或提交mutation，将<code>&#123;root: true&#125;</code>作为第三参数传给<code>dispatch</code>或<code>commit</code>即可。</p>
+<p>若需要在带命名空间的模块注册全局action，可添加<code>root: true</code>，并将这个action的定义放在函数<code>handler</code>中。</p>
+<p>当使用<code>mapState</code>，<code>mapGetters</code>，<code>mapActions</code>和<code>mapMutations</code>这些函数来绑定带命名空间的模块时，可将模块的空间名称字符串作为第一个参数传递给函数，这样所有绑定都会自动将该模块作为上下文。</p>
+<p>可以通过使用<code>createNamespaceHelpers</code>创建基于某个命名空间辅助函数。它返回一个对象，对象里有新的绑定在给定命名空间值上的组件绑定辅助函数。</p>
+<p>组件绑定的辅助函数</p>
+<ul>
+<li><code>mapState(namespace?: string, map: Array&lt;string&gt; | Object&lt;string | function&gt;): Object</code></li>
+<li><code>mapGetters(namespace?: string, map: Array&lt;string&gt; | Object&lt;string&gt;): Object</code></li>
+<li><code>mapActions(namespace?: string, map: Array&lt;string&gt; | Object&lt;string | function&gt;): Object</code></li>
+<li><code>mapMutations(namespace?: string, map: Array&lt;string&gt; | Object&lt;string | function&gt;): Object</code></li>
+<li><code>createNamespacedHelpers(namespace: string): Object</code></li>
+</ul>
 <p><strong>JavaScript</strong></p>
 <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array">JavaScript标准内置对象 &gt; Array</a></p>
 <p>JSON.stringify()方法将一个JavaScript对象或值转换为JSON字符串</p>
@@ -378,6 +405,8 @@ function proxy(target, sourceKey, key) &#123;
 <li>等等</li>
 </ul>
 <p>在绝大多数情况下，函数的调用方式决定了this的值（运行时绑定）。this不能在执行期间被赋值，并且在每次函数被调用时this的值也可能会不同。箭头函数不提供自身的this绑定，this的值将保持为闭合词法上下文的值。</p>
+<p>async函数是使用async关键字声明的函数。async函数是AsyncFunction构造函数的实例，并且其中允许使用await关键字。async和await关键字让我们可以用一种更简洁的方式写出基于Promise的异步行为，而无需刻意地链式调用promise。</p>
+<p>await操作符用于等待一个Promise兑现并获取它兑现之后的值。它只能在异步函数或者模板顶层中使用。</p>
 
     </div>
 
