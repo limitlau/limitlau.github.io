@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Vue框架学习笔记（Vue 2）" />
+    <meta name="hexo-theme-A4" content="v1.6.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Lau | Learning..</title>
+
+    
+        
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css">
+ 
+            <!--注意：首页既不是post也不是page-->
+            
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #fdbb30; 
+            --waline-color: #fdbb30; 
+            --waline-border-color: #fdbb30; 
+            --waline-white: #fdbb30; 
+            --waline-bgcolor-light: #247aac;  
+        }
+        body {
+            color: #fdbb30;
+            background: #c96149;
+        }
+        .post-md code {
+            background: black;
+            color: white; 
+        }
+        .year-font-color {
+            color: #fdbb30 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #fdbb30; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #fdbb30;
+            color: #fdbb30; 
+        }
+        .wl-btn {
+            border: 1px solid #fdbb30; 
+            color:  #fdbb30;  
+        }
+        .wl-btn.primary {
+            color: #247aac; 
+        }
+        .wl-header label {
+            color: #fdbb30;
+        }
+        a {
+            color: #fec591;
+        }
+
+        .post-md a {
+            color: #fec591;
+        }
+
+        .nav li a {
+            color: #fec591;
+        }
+
+        .archive-main a:link {
+            color: #fec591;
+        }
+        .archive-main a:visited {
+            color: #002d62; 
+        }
+
+        .archive li span {
+            color: #fdbb30;
+        }
+
+        .post-main-title {
+            color: #fdbb30;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #fdbb30;
+        }
+
+        [data-waline] p {
+            color: #fdbb30;
+        }
+        [data-waline] a {
+            color: #fdbb30;
+        } 
+        .wl-sort li.active {
+            color: #fdbb30;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #247aac;
+        }
+
+        .paper {
+            background: #c96149;
+        }
+
+        .index-main {
+            background: #fdfdfe;
+        }
+
+        .paper-main {
+            background: #247aac;
+        }
+
+        .wl-panel {
+            background: #247aac;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #247aac;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #247aac;
+        }
+    </style>
+
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Lau</a> 
+            <span class="description">Empty your mind. Be formless, shapeless, like water.</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Vue框架学习笔记（Vue 2）
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p><strong>选项&#x2F;数据</strong></p>
+<p>data	</p>
+<p>以_或$开头的property不会被Vue实例代理，因为它们可能和Vue内置的propert、API方法冲突。</p>
+<p>当一个组件被定义，data必须声明为返回一个初始数据对象的函数。如若data任然是纯粹的对象，则所有实例将共同引用一个数据对象！提供data函数，在每次创建新实例后，调用data函数都能返回初始数据的一个全新副本数据对象。</p>
+<p>computed</p>
+<p>计算属性将被混入到Vue实例中，所有getter和setter的this上下文自动地绑定为Vue实例。</p>
+<p>计算属性的结果会被缓存，除非依赖的响应式property变化才会重新计算。</p>
+<p>watch</p>
+<p>一个对象，键是需要观察的表达式，值是对应回调函数。值也可以是方法名，或者包含选项的对象。Vue实例将会在实例化时调用$watch()，遍历watch对象的每一个property。</p>
+<p>若用箭头函数来定义watcher函数，this将不会按照期望指向Vue实例，因为箭头函数绑定了父级作用域的上下文。</p>
+<p>当需要在数据变化时执行异步或开销较大的操作时，通过watch选项提供的通用方法来响应数据的变化。</p>
+<p>​	</p>
+<p><strong>选项 &#x2F; DOM</strong></p>
+<p>render()渲染函数接收一个createElement方法作为第一个参数用来创建VNode，若Vue选项中的render函数存在，Vue构造函数不会从template选项或通过el选项指定的挂载元素中提取出的HTML模板编译渲染函数。</p>
+<p>template	一个字符串模板作为Vue实例的标识使用。模板将会替换挂载的元素，挂载元素的内容都将被忽略，除非模板的内容有分发插槽。</p>
+<p>​	</p>
+<p><strong>实例方法&#x2F;数据</strong></p>
+<p>vm.$watch(expOrFn, callback, [options])</p>
+<p>观察Vue实例上的一个表达式或者一个函数计算结果的变化，回调函数得到的参数为新值和旧值。表达式只接受简单的键路径，对于更复杂的表达式，用一个函数替代。</p>
+<p>在变更对象或数组时，旧值会与新值相等。因为它们的引用指向同一个对象&#x2F;数组，Vue不会保留变更之前的副本。</p>
+<p>options选项</p>
+<ul>
+<li>{boolean} deep：深度监视，能发现对象内部值的变化</li>
+<li>{boolean} immediate：立即以表达式的当前值触发回调</li>
+</ul>
+<p>​	</p>
+<p><strong>实例方法&#x2F;生命周期</strong></p>
+<p>vm.$nextTick([callback])	将回调延迟至下次DOM更新循环之后执行，回调的this自动绑定到调用它的实例上。</p>
+<p>​	</p>
+<p><strong>Vue实例生命周期</strong></p>
+<p><img src="https://v2.cn.vuejs.org/images/lifecycle.png"></p>
+<p>​	</p>
+<p><strong>模板语法</strong></p>
+<p>“Mustache”语法（双大括号）文本插值</p>
+<p>模板表达式都被放在沙盒中，只能访问<a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/v2.6.10/src/core/instance/proxy.js#L9">全局变量的一个白名单</a>，如Math和Date。</p>
+<p>​	</p>
+<p><strong>条件渲染</strong></p>
+<p>v-else和v-else-if指令必须紧跟在v-if之后，否则将不被识别</p>
+<p>v-show只是简单地切换元素的CSS属性dispaly</p>
+<p>v-if是“真正的”条件渲染，它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建</p>
+<p>v-if有更高的切换开销，而v-show有更高的初始渲染开销。需要频繁切换使用v-show，运行时条件很少改变使用v-if</p>
+<p>​	</p>
+<p><strong>列表渲染</strong></p>
+<p>v-for基于数组渲染时，可选的第二个参数为当前项的索引。v-for&#x3D;”(item, index) in items”</p>
+<p>用v-for遍历对象的property时，可以提供的第二个参数为property名称，第三个参数为索引。v-for&#x3D;”(value, name, index) in object”</p>
+<p>key的特殊attribute主要用在Vue的虚拟DOM算法，它是Vue识别节点的一个通用机制，在新旧nodes对比时辨识VNodes。为了能给Vue一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，建议在使用v-for时指定key值。v-bind:key&#x3D;”item.id”</p>
+<p>Vue将数组的push()、pop()、shift()、unshift()、splice()、sort()、reverse()方法进行了包裹，调用这些方法可以触发视图更新</p>
+<p>​	</p>
+<p><strong>事件处理</strong></p>
+<p>用v-on指令监听DOM事件，并在触发时运行一些JavaScript代码。</p>
+<p>v-on	绑定事件监听器。事件类型由参数指定。表达式可以是一个方法的名字或一个内联语句，如果没有修饰符也可以省略。在监听原生DOM事件时，方法以时间为唯一的参数。如果使用内联语句，语句可以访问一个<code>$event</code>property。当使用对象语法时，不支持任何修饰器。缩写：<code>@</code></p>
+<p>事件修饰符，可以串联使用，会按顺序生效。</p>
+<ul>
+<li>.stop：停止事件冒泡，与event.stopPropagation()等效</li>
+<li>.prevent：阻止时间默认行为，与event.preventDefault()等效</li>
+<li>.capture：将默认的事件冒泡模式更换为事件捕获模式</li>
+<li>.self：只响应元素自身的事件，不接受传递的事件</li>
+<li>.once：事件只发生一次</li>
+<li>.passive：与.prevent一起使用，.prevent会被忽略。.passive会告诉浏览器你不想阻止事件默认行为，立即触发</li>
+</ul>
+<p>按键修饰符，常用按键码的别名：.enter .tab .delete (delete &amp; backspace) .esc .space .up .down .left .right</p>
+<p>tab按键只能触发keydown，无法触发keyup事件</p>
+<p>可通过全局config.keyCodes对象自定义案件修饰符别名</p>
+<p>系统修饰键：.ctrl .alt .shift .meta</p>
+<p>修饰键和keyup事件一起使用时要按住修饰键并释放其他组合键才能触发事件</p>
+<p>使用keyCode取代按键名可以获得与常规按键相同的效果</p>
+<p>​	</p>
+<p><strong>指令</strong></p>
+<p>指令的职责是，当表达式的值改变时，将其产生的连带影响，响应式地作用于DOM。</p>
+<p>v-text：使指令中解析出的内容覆盖标签体的内容</p>
+<p>v-html：更新元素的innerHTML，内容按普通HTML插入，不会作为Vue模板进行编译（危险，易导致XSS攻击）</p>
+<p>v-cloak：隐藏未编译的Mustache标签直到实例准备结束</p>
+<p>v-bind：动态地绑定一个或多个attribute，或一个组件prop到表达式，绑定class或style时支持数据或对象。无参数时，可以绑定到一个包含键值对的对象。缩写: <code>:</code></p>
+<p>v-model：在表单控件或者组件上创建双向绑定。</p>
+<p>​	</p>
+<p><strong>组件</strong></p>
+<p>组件是可复用的Vue实例，每用一次组件，就会有一个它的新实例被创建。</p>
+<p>每个组件必须只有一个根元素</p>
+<p>注册全局组件，传入一个选项对象，自动调用Vue.extend。即Vue.component(‘comp’, { }) &#x3D;&#x3D; Vue.component(‘comp’, Vue.extend({ }))，若只传组件名参数则返回组件的构造器。</p>
+<p><code>VueComponent.prototype.__proto__ === Vue.prototype</code></p>
+<p>​	</p>
+<p><strong>Prop</strong></p>
+<p>父子prop之间形成的是单向下行绑定：父级prop的更新会流动到子组件中，反过来则不行。</p>
+<p>每次父级组件发生变更时，子组件中所有的prop都会刷新未最新的值。</p>
+<p>JavaScript中对象和数组是通过引用传入的，在子组件中改变这个对象或数组本身将会影响到父组件的状态，因此不应该在子组件内部改变prop。</p>
+<p>​	</p>
+<p><a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/components-custom-events.html"><strong>自定义事件</strong></a></p>
+<p>不同于组件和prop，不存在自动化大小写转换。v-on事件监听器在DOM模板中会被自动转换为全小写（因为HTML是大小写不敏感的），触发的事件名需要完全匹配监听这个事件所用的名称，推荐始终使用kebab-case的事件名。</p>
+<p>vm.$on(event, callback)	监听当前实例上的自定义事件。参数中的回调函数是普通函数则函数体中的this指向触发事件的实例，若是箭头函数则this指向当前实例。</p>
+<p>vm.$once(event, callback)	监听一个自定义事件，触发一次后移除监听器。</p>
+<p>​	</p>
+<p><strong>混入</strong></p>
+<p>分发Vue组件中的可复用功能，一个混入对象可以包含任意组件选项。</p>
+<p>组件和混入对象的同名钩子函数将合并为一个数组，混入对象的钩子将在组件自身钩子之前调用。</p>
+<p>值为对象的属性，如methods、components和directives，会被合并为同一个对象。合并时对象键名冲突时，取组件对象的键值对。</p>
+<p>​	</p>
+<p><a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/custom-directive.html"><strong>自定义指令</strong></a></p>
+<p>​	</p>
+<p><strong>插件</strong></p>
+<p>在new Vue()启动应用之前通过全局方法Vue.use()使用</p>
+<p>插件暴露一个install方法，第一个参数为Vue构造器，第二次参数为可选的选项对象</p>
+<p>​	</p>
+<p><strong>深入响应式原理</strong></p>
+<p>把普通JavaScript对象传入Vue实例作为data选项，Vue将遍历此对象所有的property，并使用Object.defineProperty将这些property全部转为getter&#x2F;setter，从而让data的property能够响应数据变化。这些getter&#x2F;setter在内部让Vue能够追踪，在property被访问和修改时通知变更。</p>
+<p>每个组件实例都对应一个watcher实例，它会在组件渲染的过程中把“接触”过的数据property记录为依赖。之后当依赖项的setter触发时，会通知watcher，从而使它关联的组件重新渲染。</p>
+<p><img src="https://v2.cn.vuejs.org/images/data.png" alt="响应式原理"></p>
+<p>​	</p>
+<p><strong>声明响应式property</strong></p>
+<p>根级响应式property无法动态添加，必须在初始化实例前声明</p>
+<p>Vue无法探测响应式对象中新增的property，可使用Vue.set(target, propertyName&#x2F;index, value方法向嵌套对象添加响应式property或修改数组元素时在响应式系统内触发状态更新。vm.$set实例方法是全局Vue.set的别名</p>
+<p>​	</p>
+<p><strong>数据代理相关源码</strong></p>
+<pre><code>//获取data，此时vm对象上还没有_data属性
+    var data = vm.$options.data;
+/在vm对象上添加_data属性，_data属性指向底层真实data对象，不走数据代理机制。
+    data = vm._data = isFunction(data) ? getData(data, vm) : data || &#123;&#125;;
+//判断属性名是否以_或$开头的函数：
+    function isReserved(str) &#123;
+        var c = (str + &#39;&#39;).charCodeAt(0);
+        return c === 0x24 || c === 0x5f;
+    &#125;
+//isReserved()函数返回false后调用proxy(vm, &quot;_data&quot;, key)进行数据代理
+var sharedPropertyDefinition = &#123;
+    enumerable: true, //属性是否可迭代遍历，值为false则Object.keys()方法无法获取此属性
+    configurable: true, //属性是否可删除
+    get: noop,
+    set: noop
+&#125;;
+function proxy(target, sourceKey, key) &#123;
+    sharedPropertyDefinition.get = function proxyGetter() &#123;
+    return this[sourceKey][key];
+    &#125;;
+    sharedPropertyDefinition.set = function proxySetter(val) &#123;
+    this[sourceKey][key] = val;
+    &#125;;
+    Object.defineProperty(target, key, sharedPropertyDefinition);
+&#125;
+</code></pre>
+<p>​	</p>
+<p><strong>Vuex</strong></p>
+<p>Vuex是一个专为Vue.js应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。</p>
+<p><img src="https://v3.vuex.vuejs.org/vuex.png"></p>
+<p>存储在Vuex中的数据和Vue实例中的<code>data</code>遵循相同的规则</p>
+<p>由于Vuex的状态存储是响应式的，从store实例中读取状态最简单的方法就是在计算属性中返回某个状态</p>
+<p>Vuex通过<code>store</code>选项，提供了一种机制状态从根组件“注入”到每一个子组件中（需调用&#96;&#96;Vue.use(Vuex)<code>)。通过在根实例中注册</code>store<code>选项，该store实例会注入到根组件下所有子组件中，且子组件能通过</code>this.$store&#96;访问到。</p>
+<p>Vuex允许在store中定义“getter”（可以认为是store的计算属性）。像计算属性一样，getter的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了变化才会被重新计算。</p>
+<p>Getter接收state作为其第一个参数，可以接受其他getter作为第二个参数</p>
+<p>Getter在通过属性访问时是作为Vue的响应式系统的一部分缓存其中的，在通过方法访问时，每次都会去进行调用，而不会缓存结果。</p>
+<p>更改Vuex的store中的状态的唯一方法是提交mutation。</p>
+<p>在Vuex中，mutation都是同步事务，mutation必须是同步函数。</p>
+<p>Action提交的是mutation，而不是直接变更状态。Action可以包含任意异步操作。</p>
+<p>Action函数接受一个与store实例具有相同方法和属性的context对象，可通过<code>context.commit</code>提交一个mutation，或通过<code>context.state</code>和<code>context.getters</code>来获取state和getters。</p>
+<p>Vuex允许将store分割成模块，以解决应用变得复杂时，store对象可能变得相当臃肿的问题。</p>
+<p>对于模块内部的mutation和getter，接收的第一个参数是模块的局部状态对象。对于模块内部的action，局部状态通过<code>context.state</code>暴露出来。根节点状态则为<code>context.rootState</code>。对于模块内部的getter，根节点状态会作为第三个参数暴露出来。</p>
+<p>默认情况下，模块内部的action、mutation和getter是注册在全局命名空间的，这样使得多个模块能够对同一mutation或action做出响应。如果希望模块有更高的封装度和复用性，可添加<code>namespaced: true</code>的方式使其成为带命名空间地模块。当模块被注册后，它的所有getter、action及mutation都会自动根据模块注册的路径调整命名。</p>
+<p>在使用模块内容时不需要在同一模块内额外添加空间名前缀。</p>
+<p>如果希望使用全局state和getter，<code>rootState</code>和<code>rootGetters</code>会作为第三和第四参数传入getter，也会通过context对象的属性传入action。</p>
+<p>若需要在全局命名空间内分发action或提交mutation，将<code>&#123;root: true&#125;</code>作为第三参数传给<code>dispatch</code>或<code>commit</code>即可。</p>
+<p>若需要在带命名空间的模块注册全局action，可添加<code>root: true</code>，并将这个action的定义放在函数<code>handler</code>中。</p>
+<p>当使用<code>mapState</code>，<code>mapGetters</code>，<code>mapActions</code>和<code>mapMutations</code>这些函数来绑定带命名空间的模块时，可将模块的空间名称字符串作为第一个参数传递给函数，这样所有绑定都会自动将该模块作为上下文。</p>
+<p>可以通过使用<code>createNamespaceHelpers</code>创建基于某个命名空间辅助函数。它返回一个对象，对象里有新的绑定在给定命名空间值上的组件绑定辅助函数。</p>
+<p>组件绑定的辅助函数</p>
+<ul>
+<li><code>mapState(namespace?: string, map: Array&lt;string&gt; | Object&lt;string | function&gt;): Object</code></li>
+<li><code>mapGetters(namespace?: string, map: Array&lt;string&gt; | Object&lt;string&gt;): Object</code></li>
+<li><code>mapActions(namespace?: string, map: Array&lt;string&gt; | Object&lt;string | function&gt;): Object</code></li>
+<li><code>mapMutations(namespace?: string, map: Array&lt;string&gt; | Object&lt;string | function&gt;): Object</code></li>
+<li><code>createNamespacedHelpers(namespace: string): Object</code></li>
+</ul>
+<p><strong>Vue Router</strong></p>
+<p>在模块化工程中使用，要通过Vue.use()明确地安装路由功能。通过router配置参数注入路由，从而让整个应用都有路由功能。</p>
+<p>当<code>&lt;router-link&gt;</code>对应的路由匹配成功，将自动设置class属性值<code>.router-link-active</code></p>
+<p><code>&lt;router-view&gt;</code>组件是一个functional组件，渲染路径匹配到的视图组件。<code>&lt;router-view&gt;</code>渲染的组件还可以内嵌自己的<code>&lt;router-view&gt;</code>，根据嵌套路径，渲染嵌套组件。</p>
+<p>在<code>vue-router</code>的路由路径中使用“动态路径参数”可将某种模式匹配到的所有路由，全都映射到同个组件。</p>
+<p>一个“路径参数”使用冒号<code>:</code>标记，当匹配到一个路由时，参数值会被设置到<code>this.$route.params</code>，可以在每个组件内使用</p>
+<p>当使用路由参数时，原来的组件实例会被复用（路由渲染同个组件），这也意味着组件的生命周期钩子不会再被调用。</p>
+<p>当使用一个通配符时，<code>$route.params</code>内会自动添加一个名为<code>pathMatch</code>的参数，它包含了URL通过通配符被匹配的部分。</p>
+<p>同一个路径可以匹配多个路由时，匹配的优先级就按路由的定义顺序排序。</p>
+<p>要在嵌套的出口中渲染组件，需要在<code>VueRouter</code>的参数中使用<code>children</code>配置。</p>
+<p>以<code>/</code>开头的嵌套路径会被当作根路径，可充分使用嵌套组件而无需设置嵌套的路径。</p>
+<p>若在<a target="_blank" rel="noopener" href="https://v3.router.vuejs.org/zh/guide/essentials/navigation.html">编程式的导航</a>的方法中传入的对象参数中提供了<code>path</code>，<code>params</code>会被忽略，同样的规则也适用于<code>router-link</code>组件的<code>to</code>属性。</p>
+<p>想同时（同级）展示多个视图，而不是嵌套展示。可给<code>router-view</code>设置名字，不设置默认为<code>default</code></p>
+<p>一个视图使用一个组件渲染，因此对于同个路由，多个视图就需要多个组件。配置项为<code>components</code></p>
+<p>重定向配置项<code>redirect</code>，可返回路径字符串、命名的路由或是返回重定向目标的方法。导航守卫应用在跳转路由的目标上</p>
+<p>在组件中使用<code>$route</code>会使之与对应路由形成高度耦合，从而使组件只能在某些特定的URL上使用，限制了其灵活性。可使用<code>props</code>将组件与路由解耦，这样便可以在任何地方使用该组件，更易于重用和测试。</p>
+<p>如果将<code>props</code>设置为<code>true</code>，<code>route.params</code>将会被设置为组件属性</p>
+<p><code>vue-router</code>默认hash模式，使用URL的hash来模拟一个完整的URL，于是当URL改变时，页面不会重新加载。</p>
+<p>使用history模式时，要在服务端增加一个覆盖所有情况的候选资源：如果URL匹配不到任何静态资源，则应该返回同一个<code>index.html</code>页面，这个页面就是app以来的页面。为了避免这么做之后不再返回404错误页面，应该在Vue应用里面覆盖所有的路由情况，然后再给给出一个404页面。</p>
+<p>参数或查询的改变并不会触发进入&#x2F;离开的导航守卫，可以通过观察<code>$route</code>对象来应对这些变化，或使用<code>beforeRouteUpdate</code>的组件内守卫。</p>
+<p>可以使用<code>router.beforeEach</code>注册一个全局前置守卫，方法接收参数：</p>
+<ul>
+<li><code>to: Route</code>：即将要进入的目标路由对象</li>
+<li><code>from: Route</code>：当前导航正要离开的路由</li>
+<li><code>next: Function</code>：一定要调用该方法来执行resolve这个钩子。</li>
+</ul>
+<p>当一个导航触发时，全局前置守卫按照创建顺序调用。守卫是异步解析执行，此时导航在所有守卫resolve完之前一直处于等待中。</p>
+<p>在路由组件内直接定义的<code>beforeRouteEnter</code>守卫不能访问<code>this</code>，因为守卫在导航确认前被调用，因此即将登场的新组件还没被创建。可以通过传一个回调给<code>next</code>来访问组件实例。在导航被确认的时候执行回调，并且把组件实例作为回调方法的参数。<code>beforeRouteEnter</code>是唯一支持给<code>next</code>传递回调的守卫。</p>
+<p>完整的导航解析流程</p>
+<ol>
+<li>导航被触发</li>
+<li>在失活的组件里调用<code>beforeRouteLeave</code>守卫。</li>
+<li>调用全局的<code>beforeEach</code>守卫。</li>
+<li>在重用的组件里调用<code>beforeRouteUpdate</code>守卫。</li>
+<li>在路由配置里调用<code>beforeEnter</code>。</li>
+<li>解析异步路由组件。</li>
+<li>在被激活的组件里调用<code>beforeRouteEnter</code>。</li>
+<li>调用全局的<code>beforeResolve</code>守卫。</li>
+<li>导航被确认。</li>
+<li>调用全局的<code>afterEach</code>钩子。</li>
+<li>触发DOM更新。</li>
+<li>调用<code>beforeRouteEnter</code>守卫中给next的回调函数，创建好的组件实例会作为回调函数的参数传入。</li>
+</ol>
+<p>一个路由匹配到的所有路有记录会暴露为<code>$route</code>对象（还有在导航守卫中的路由对象）的<code>$route.matched</code>数组，可遍历<code>$route.matched</code>来检查路由记录中配置的<code>meta</code>字段。</p>
+<p><strong>JavaScript</strong></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array">JavaScript标准内置对象 &gt; Array</a></p>
+<p>JSON.stringify()方法将一个JavaScript对象或值转换为JSON字符串</p>
+<p>Object.keys()静态方法返回一个由给定对象自身的可枚举的字符串键属性名组成的数组。</p>
+<p>全局的setTimeout()方法设置一个定时器，一旦定时器到期，就会执行一个函数或指定的代码片段。</p>
+<p>模板字面量是用反引号（ &#96; ）分隔的字面量，允许多行字符串、带嵌入表达式的字符串插值和一种叫带标签的模板的特殊结构。</p>
+<p>展开语法（…），可以在函数调用&#x2F;数组构造时，将数组表达式或string在语法层面展开；还可以在构造字面量对象时，将对象表达式按key-value的方式展开。</p>
+<p>Object.defineProperty()静态方法会直接在一个对象上定义一个新属性，或修改其现有属性，并返回此对象。</p>
+<p>箭头函数表达式的语法比函数表达式更简洁，并且没有自己的this，arguments，super或new.target。箭头函数表达式更适用于那些本来需要匿名函数的地方，并且它不能用作构造函数。</p>
+<p>在箭头函数出现之前，每一个新函数根据它是如何被调用的来定义这个函数的this值：</p>
+<ul>
+<li>如果该函数是一个构造函数，this指针指向一个新的对象</li>
+<li>在严格模式下的函数调用下，this指向undefined</li>
+<li>如果该函数是一个对象的方法，则它的this指针指向这个对象</li>
+<li>等等</li>
+</ul>
+<p>在绝大多数情况下，函数的调用方式决定了this的值（运行时绑定）。this不能在执行期间被赋值，并且在每次函数被调用时this的值也可能会不同。箭头函数不提供自身的this绑定，this的值将保持为闭合词法上下文的值。</p>
+<p>async函数是使用async关键字声明的函数。async函数是AsyncFunction构造函数的实例，并且其中允许使用await关键字。async和await关键字让我们可以用一种更简洁的方式写出基于Promise的异步行为，而无需刻意地链式调用promise。</p>
+<p>await操作符用于等待一个Promise兑现并获取它兑现之后的值。它只能在异步函数或者模板顶层中使用。</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-07-26</span>
+            
+                <span>该篇文章被 Limit Lau</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/'>
+                            笔记整理
+                        </a>
+                    
+                        <a href='/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/'>
+                            前端开发
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%A1%86%E6%9E%B6/'>
+                            框架
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2019-2023 China 
+
+            
+                
+
+            
+                
+                    / <a target="_blank" rel="noopener" href="https://blog.csdn.net/M1TA3_Lau"> CSDN </a>
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>Rage, rage against the dying of the light🐭</span>
+            
+    
+</div>
+
+
+    
+        
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css">
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js"></script>
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js"></script>
+
+    
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
