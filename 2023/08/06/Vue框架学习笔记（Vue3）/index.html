@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
-    <meta name="description" content="" />
+    <meta name="description" content="Vue框架学习笔记（Vue 3）" />
     <meta name="hexo-theme-A4" content="v1.6.9" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
     <title>Lau | Learning..</title>
@@ -183,13 +183,7 @@
             
         
             
-                <li><i>
-                    
-                        <u>
-                            <a  href="/categories/">分类</a>
-                        </u>
-                    
-                </i></li>
+                <li><a href="/categories/">分类</a></li>
             
         
             
@@ -212,43 +206,87 @@
 
                     
                     
-                        <div class="archive-list">
-  <ul class="archive">
-
-    
-    <span>🗂️<i>CS</i></span>
-      
-      
-      
-          
-    
-    
-  
-    
-        <li>
-          <span class="archive-date">2023/06/19</span>
-          <div class="archive-main">
-              <a class="archive-title" href="/2023/06/19/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88%E7%9C%9F%E9%A2%98%E7%AC%94%E8%AE%B0/">软件设计师真题笔记</a>
-          </div>
-        </li>
-    
-  
-    
-        <li>
-          <span class="archive-date">2023/06/11</span>
-          <div class="archive-main">
-              <a class="archive-title" href="/2023/06/11/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">软件设计师备考笔记</a>
-          </div>
-        </li>
-    
-  
-  </ul>
-</div>
-
- 
-                    
                     
                     <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Vue框架学习笔记（Vue 3）
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>​		之于Vue2笔记的修改和增强，看一遍官方文档，慢慢整理</p>
+<hr>
+<p><strong>选项式API</strong></p>
+<p>使用选项式API，可以包含多个选项的对象来描述组件的逻辑，例如<code>data</code>、<code>methods</code>和<code>mounted</code>。选项所定义的属性都会暴露在函数内部的<code>this</code>上，它会指向当前的组件实例。选项式API是在组合式API的基础上实现的。</p>
+<p><strong>组合式API</strong></p>
+<p>通过组合式API，可以使用导入的API函数来描述组件逻辑。在单文件组件中，组合式API通常会与<code>&lt;script setup&gt;</code>搭配使用。这个<code>setup</code>attribute是一个标识，告诉Vue需要在编译时进行一些处理，让我们可以更简洁地使用组合式API，<code>&lt;script setup&gt;</code>中的导入和顶层变量&#x2F;函数都能够在模板中直接使用。</p>
+<p><strong>模板语法</strong></p>
+<p>布尔型attribute根据true&#x2F;false值来决定attribute是否应该存在于该元素上。</p>
+<p>当v-bind绑定的attribute值为真值或一个空字符串时，元素会包含这个attribute，而当其为其他假值时attribute会被忽略。</p>
+<p>绑定在表达式中的方法在组件每次更新时都会被重新调用，因此不应该产生任何副作用，比如改变数据或触发异步操作。</p>
+<p>在指令参数上也可以使用一个JavaScript表达式，需要包含在一对方括号内。</p>
+<p>动态参数中表达式的值应当是一个字符串，或者是null。特殊值null意为显式移除该绑定。其他非字符串的值会触发警告。</p>
+<p>动态参数表达式因为某些字符的缘故有一些语法限制，比如空格和引号，在HTML attribute名称都是不合法的。需要传入复杂的动态参数时，可使用计算属性代替复杂的表达式。</p>
+<p>当使用DOM内嵌模板（直接写在HTML文件里的模板）时，需要避免在名称中使用大写字母，因为浏览器会强制将其转换为小写。</p>
+<p>完整的指令语法：</p>
+<p><img src="https://cn.vuejs.org/assets/directive.69c37117.png"></p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-08-06</span>
+            
+                <span>该篇文章被 Limit Lau</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/'>
+                            笔记整理
+                        </a>
+                    
+                        <a href='/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/'>
+                            更新中
+                        </a>
+                    
+                        <a href='/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/'>
+                            前端开发
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%A1%86%E6%9E%B6/'>
+                            框架
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
                     
                     
                     <div class="footer">

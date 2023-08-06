@@ -191,6 +191,10 @@
             
         
             
+                <li><a href="/diary/">抒发</a></li>
+            
+        
+            
                 <li><a href="/about/">关于</a></li>
             
         
@@ -250,6 +254,11 @@ reflectorFactory?,plugins?,environments?,databaseIdProvider?,mappers?)&quot;.--&
     &lt;!--以包为单位，将包下所有的类设置默认的类型别名，即不区分大小写的类名--&gt;
     &lt;package name=&quot;com.lau.mybatis.pojo&quot;/&gt;
 &lt;/typeAliases&gt;
+
+&lt;plugins&gt;
+    &lt;!--设置分页插件--&gt;
+    &lt;plugin interceptor=&quot;com.github.pagehelper.PageInterceptor&quot;&gt;&lt;/plugin&gt;
+&lt;/plugins&gt;
 
 &lt;!--设置连接数据库的环境--&gt;
 &lt;!--enviroments：配置多个连接数据库的环境
@@ -524,11 +533,6 @@ public void testInsertUser() throws IOException &#123;
             © 2019-2023 China 
 
             
-                
-
-            
-                
-                    / <a target="_blank" rel="noopener" href="https://blog.csdn.net/M1TA3_Lau"> CSDN </a>
                 
 
             
