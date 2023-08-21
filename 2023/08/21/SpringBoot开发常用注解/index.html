@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="SpringBoot开发常见注解" />
+    <meta name="hexo-theme-A4" content="v1.6.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Lau | Learning..</title>
+
+    
+        
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css">
+ 
+            <!--注意：首页既不是post也不是page-->
+            
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #fdbb30; 
+            --waline-color: #fdbb30; 
+            --waline-border-color: #fdbb30; 
+            --waline-white: #fdbb30; 
+            --waline-bgcolor-light: #247aac;  
+        }
+        body {
+            color: #fdbb30;
+            background: #c96149;
+        }
+        .post-md code {
+            background: black;
+            color: white; 
+        }
+        .year-font-color {
+            color: #fdbb30 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #fdbb30; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #fdbb30;
+            color: #fdbb30; 
+        }
+        .wl-btn {
+            border: 1px solid #fdbb30; 
+            color:  #fdbb30;  
+        }
+        .wl-btn.primary {
+            color: #247aac; 
+        }
+        .wl-header label {
+            color: #fdbb30;
+        }
+        a {
+            color: #fec591;
+        }
+
+        .post-md a {
+            color: #fec591;
+        }
+
+        .nav li a {
+            color: #fec591;
+        }
+
+        .archive-main a:link {
+            color: #fec591;
+        }
+        .archive-main a:visited {
+            color: #002d62; 
+        }
+
+        .archive li span {
+            color: #fdbb30;
+        }
+
+        .post-main-title {
+            color: #fdbb30;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #fdbb30;
+        }
+
+        [data-waline] p {
+            color: #fdbb30;
+        }
+        [data-waline] a {
+            color: #fdbb30;
+        } 
+        .wl-sort li.active {
+            color: #fdbb30;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #247aac;
+        }
+
+        .paper {
+            background: #c96149;
+        }
+
+        .index-main {
+            background: #fdfdfe;
+        }
+
+        .paper-main {
+            background: #247aac;
+        }
+
+        .wl-panel {
+            background: #247aac;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #247aac;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #247aac;
+        }
+    </style>
+
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Lau</a> 
+            <span class="description">Empty your mind. Be formless, shapeless, like water.</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/diary/">抒发</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            SpringBoot开发常见注解
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#org-springframework-boot"><span class="post-toc-text">org.springframework.boot</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#org-springframework-boot-autoconfigure"><span class="post-toc-text">org.springframework.boot.autoconfigure.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#org-springframework-context-annotation"><span class="post-toc-text">org.springframework.context.annotation.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#org-springframework-transaction-annotation"><span class="post-toc-text">org.springframework.transaction.annotation.</span></a></li></ol>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="org-springframework-boot"><a href="#org-springframework-boot" class="headerlink" title="org.springframework.boot"></a>org.springframework.boot</h2><p>@SpringBootConfiguration</p>
+<p>应用程序应该只包含一个@SpringBootConfiguration且一般都使用@SpringBootApplication使之包含在其中</p>
+<p>与Configuration等效，且有助于在集成测试中进行配置检测</p>
+<ul>
+<li>@AliasFor(annotation &#x3D; Configuration.class)<br>boolean proxyBeanMethods() default true;<br>是否代理@Bean方法</li>
+</ul>
+<h2 id="org-springframework-boot-autoconfigure"><a href="#org-springframework-boot-autoconfigure" class="headerlink" title="org.springframework.boot.autoconfigure."></a>org.springframework.boot.autoconfigure.</h2><p>@SpringBootApplication</p>
+<p>标识一个声明了一个或多个@Bean方法的配置类，同时触发自动配置和组件扫描。</p>
+<p>效果等同于@SpringBootConfiguration + @EnableAutoConfiguration + @ComponentScan</p>
+<ul>
+<li><p>@AliasFor(annotation &#x3D; EnableAutoConfiguration.class)<br>Class&lt;?&gt;[] exclude() default {};<br>排除指定的自动配置类，使其不再生效</p>
+</li>
+<li><p>@AliasFor(annotation &#x3D; EnableAutoConfiguration.class)<br>String[] excludeName() default {};<br>排除指定类名对应的自动配置类，使其不再生效</p>
+</li>
+<li><p>@AliasFor(annotation &#x3D; ComponentScan.class, attribute &#x3D; “basePackages”)<br>String[] scanBasePackages() default {};<br>扫描指定的包名中带注释的组件</p>
+</li>
+<li><p>@AliasFor(annotation &#x3D; ComponentScan.class, attribute &#x3D; “basePackageClasses”)<br>Class&lt;?&gt;[] scanBasePackageClasses() default {};<br>扫描指定的类所在的包下所有带注释的Component</p>
+</li>
+<li><p>@AliasFor(annotation &#x3D; ComponentScan.class, attribute &#x3D; “nameGenerator”)<br>Class&lt;? extends BeanNameGenerator&gt; nameGenerator() default BeanNameGenerator.class;<br>指定给Spring容器中检测到的组件命名的类</p>
+</li>
+<li><p>@AliasFor(annotation &#x3D; Configuration.class)<br>boolean proxyBeanMethods() default true;<br>是否代理@Bean方法</p>
+</li>
+</ul>
+<p>@EnableAutoConfiguration</p>
+<p>开启Spring应用程序上下文的自动配置，尝试猜测和配置可能需要的bean。</p>
+<ul>
+<li><p>String <em>ENABLED_OVERRIDE_PROPERTY</em> &#x3D; “spring.boot.enableautoconfiguration”;<br>开启自动配置时用于覆盖的环境属性</p>
+</li>
+<li><p>Class&lt;?&gt;[] exclude() default {};<br>排除指定的自动配置类，使其不再生效</p>
+</li>
+<li><p>String[] excludeName() default {};<br>排除指定类名对应的自动配置类，使其不再生效</p>
+</li>
+</ul>
+<h2 id="org-springframework-context-annotation"><a href="#org-springframework-context-annotation" class="headerlink" title="org.springframework.context.annotation."></a>org.springframework.context.annotation.</h2><p>@ComponentScan</p>
+<ul>
+<li>@AliasFor(“basePackages”)<br>String[] value() default {};<br>不需要其他属性时，可不标明属性名进行简写</li>
+<li>@AliasFor(“value”)<br>String[] basePackages() default {};<br>扫描指定的包名中带注释的组件</li>
+<li>Class&lt;?&gt;[] basePackageClasses() default {};<br> 扫描指定的类所在的包下所有带注释的Component</li>
+<li>Class&lt;? extends BeanNameGenerator&gt; nameGenerator() default BeanNameGenerator.class;<br> 指定给Spring容器中检测到的组件命名的类</li>
+<li>Class&lt;? extends ScopeMetadataResolver&gt; scopeResolver() default AnnotationScopeMetadataResolver.class;<br> 指定用于解析检测到的组件的范围的类</li>
+<li>ScopedProxyMode scopedProxy() default ScopedProxyMode.<em>DEFAULT</em>;<br> 指示是否为检测到的组件生成代理，默认值遵循用于执行实际扫描的组件扫描程序的默认行为<br> 设置此属性将覆盖为scopeResolver设置的任何值</li>
+<li>String resourcePattern() default ClassPathScanningCandidateComponentProvider.<em>DEFAULT_RESOURCE_PATTERN</em>;<br>控制符合组件检测条件的类文件<br>考虑使用更灵活的方法如includeFilters和excludeFilters</li>
+<li>boolean useDefaultFilters() default true;<br> 指示是否对带有@Component、@Repository、@Service、@Controller注解的类的自动检测</li>
+<li>Filter[] includeFilters() default {};<br> 指定进行组件扫描的类型<br> 进一步将扫描范围缩小到basePackages中能匹配给定过滤器的<br> 指定过滤器会匹配指定的basePackages中任何类型，即使不被默认过滤器匹配（没有@Component注解的类）</li>
+<li>Filter[] excludeFilters() default {};<br> 指定不进行组件扫描的类型</li>
+<li>boolean lazyInit() default false;<br> 指定是否将注册扫描的bean进行延迟初始化</li>
+<li>@interface Filter <ul>
+<li>FilterType type() default FilterType.<em>ANNOTATION</em>;<br>过滤器的类型</li>
+<li>@AliasFor(“classes”)<br>Class&lt;?&gt;[] value() default {};</li>
+<li>@AliasFor(“value”)<br>Class&lt;?&gt;[] classes() default {};<br>用作过滤器的类，根据type属性配置的值来指定类，有多个类时使用or逻辑<br>实现了BeanFactoryAware、BeanClassLoaderAware等Aware接口的自定义类型过滤器中的方法会在匹配前被调用</li>
+<li>String[] pattern() default {};<br>用于过滤器的模式，作为指定Class值的替代方案<br>如果type为ASPECTJ，则为ASPECTJ类型模板表达式。type为REGEX，则为匹配完全限定名类的REGEX模式</li>
+</ul>
+</li>
+</ul>
+<p>@Bean</p>
+<ul>
+<li>@AliasFor(“name”)<br>String[] value() default {};</li>
+<li>@AliasFor(“value”)<br>String[] name() default {};</li>
+<li>boolean autowireCandidate() default true;</li>
+<li>String initMethod() default “”;</li>
+<li>String destroyMethod() default AbstractBeanDefinition.<em>INFER_METHOD</em>;</li>
+</ul>
+<p>@Import</p>
+<h2 id="org-springframework-transaction-annotation"><a href="#org-springframework-transaction-annotation" class="headerlink" title="org.springframework.transaction.annotation."></a>org.springframework.transaction.annotation.</h2><p>@Transactional</p>
+<p>描述单个方法或类上的事务属性</p>
+<ul>
+<li><p>@AliasFor(“transactionManager”)<br>String value() default “”;</p>
+</li>
+<li><p>@AliasFor(“value”)<br>String transactionManager() default “”;</p>
+<p>指定事务管理器</p>
+</li>
+<li><p>String[] label() default {};</p>
+<p>定义事务标签，用来描述事物</p>
+</li>
+<li><p>Propagation propagation() default Propagation.<em>REQUIRED</em>;</p>
+<p>事务传播类型，默认支持当前事务，不存在则创建新事物</p>
+</li>
+<li><p>Isolation isolation() default Isolation.<em>DEFAULT</em>;</p>
+<p>事务隔离级别，默认为数据库隔离级别</p>
+</li>
+<li><p>int timeout() default TransactionDefinition.<em>TIMEOUT_DEFAULT</em>;</p>
+<p>事物的超时时间，以秒为单位，默认为底层事务系统的默认超时</p>
+</li>
+<li><p>String timeoutString() default “”;</p>
+<p>同上，返回值类型不同</p>
+</li>
+<li><p>boolean readOnly() default false;</p>
+<p>若事务只读可设置为true，允许运行时进行相应优化</p>
+</li>
+<li><p>Class&lt;? extends Throwable&gt;[] rollbackFor() default {};</p>
+<p>指定须引起事务回滚的异常类型，默认会在RunTimeException和Error上回滚，推荐使用，类型安全地匹配异常类型及其子类</p>
+</li>
+<li><p>String[] rollbackForClassName() default {};</p>
+<p>指定须引起回滚的异常名称（必须是Throwable子类）</p>
+</li>
+<li><p>Class&lt;? extends Throwable&gt;[] noRollbackFor() default {};</p>
+<p>指定不能导致事务回滚的异常类型，首选方法，已类型安全的方式匹配异常类型及其子类</p>
+</li>
+<li><p>String[] noRollbackForClassName() default {};</p>
+<p>指定不能导致回滚地异常类型（必须是Throwable子类）</p>
+</li>
+</ul>
+<p><strong>javax.annotation.	|	jakarta.annotation.</strong> </p>
+<p>@Resource</p>
+<p><strong>lombok.</strong></p>
+<p>@Data</p>
+<p>@Getter</p>
+<p>@AllArgsConstructor</p>
+<p>@NoArgsConstructor</p>
+<p><strong>com.fasterxml.jackson.annotation.</strong></p>
+<p>@JsonFormat</p>
+<p><strong>org.junit.jupiter.api.</strong></p>
+<p>@Test</p>
+<p><strong>org.apache.ibatis.annotations.</strong></p>
+<p>@Mapper</p>
+<p>@Param</p>
+<p>@Select</p>
+<p>@Insert</p>
+<p>@Update</p>
+<p><strong>org.mybatis.spring.annotation.</strong></p>
+<p>@MapperScan</p>
+<p><strong>com.baomidou.dynamic.datasource.annotation.</strong></p>
+<p>@DS</p>
+<p><strong>com.baomidou.mybatisplus.annotation.</strong></p>
+<p>@TableField</p>
+<p>@TableId</p>
+<p>@TableName</p>
+<p>@EnumValue</p>
+<p>@Version</p>
+<p>@TableLogic</p>
+<p><strong>org.springframework.beans.factory.annotation.</strong></p>
+<p>@Autowired</p>
+<p><strong>org.springframework.stereotype.</strong></p>
+<p>@Service</p>
+<p>@Controller</p>
+<p>@Repository</p>
+<p><strong>org.springframework.format.annotation.</strong></p>
+<p>@DateTimeFormat</p>
+<p><strong>org.springframework.cache.annotation.</strong></p>
+<p>@EnableCaching</p>
+<p><strong>org.springframework.web.bind.annotation.</strong></p>
+<p>@CrossOrigin</p>
+<p>@RestController</p>
+<p>@RequestMapping</p>
+<p>@GetMapping</p>
+<p>@PostMapping</p>
+<p>@PutMapping</p>
+<p>@DeleteMapping</p>
+<p>@PathVariable</p>
+<p>@RequestBody</p>
+<p>@ControllerAdvice</p>
+<p>@ExceptionHandler</p>
+<p><strong>org.springframework.session.data.redis.config.annotation.web.http.</strong></p>
+<p>@EnableRedisHttpSession</p>
+<p><strong>org.springframework.boot.test.context.</strong></p>
+<p>@SpringBootTest</p>
+<p><strong>org.springframework.boot.autoconfigure.condition.</strong></p>
+<p>@ConditionalOnClass</p>
+<p>@ConditionalOnMissingBean</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-08-21</span>
+            
+                <span>该篇文章被 Limit Lau</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Java/'>
+                            Java
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%A1%86%E6%9E%B6/'>
+                            框架
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2019-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>Rage, rage against the dying of the light🐭</span>
+            
+    
+</div>
+
+
+    
+        
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css">
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js"></script>
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js"></script>
+
+    
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>

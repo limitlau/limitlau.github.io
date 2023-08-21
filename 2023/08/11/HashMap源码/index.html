@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="HashMap源码解读" />
+    <meta name="hexo-theme-A4" content="v1.6.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Lau | Learning..</title>
+
+    
+        
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css">
+ 
+            <!--注意：首页既不是post也不是page-->
+            
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #fdbb30; 
+            --waline-color: #fdbb30; 
+            --waline-border-color: #fdbb30; 
+            --waline-white: #fdbb30; 
+            --waline-bgcolor-light: #247aac;  
+        }
+        body {
+            color: #fdbb30;
+            background: #c96149;
+        }
+        .post-md code {
+            background: black;
+            color: white; 
+        }
+        .year-font-color {
+            color: #fdbb30 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #fdbb30; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #fdbb30;
+            color: #fdbb30; 
+        }
+        .wl-btn {
+            border: 1px solid #fdbb30; 
+            color:  #fdbb30;  
+        }
+        .wl-btn.primary {
+            color: #247aac; 
+        }
+        .wl-header label {
+            color: #fdbb30;
+        }
+        a {
+            color: #fec591;
+        }
+
+        .post-md a {
+            color: #fec591;
+        }
+
+        .nav li a {
+            color: #fec591;
+        }
+
+        .archive-main a:link {
+            color: #fec591;
+        }
+        .archive-main a:visited {
+            color: #002d62; 
+        }
+
+        .archive li span {
+            color: #fdbb30;
+        }
+
+        .post-main-title {
+            color: #fdbb30;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #fdbb30;
+        }
+
+        [data-waline] p {
+            color: #fdbb30;
+        }
+        [data-waline] a {
+            color: #fdbb30;
+        } 
+        .wl-sort li.active {
+            color: #fdbb30;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #247aac;
+        }
+
+        .paper {
+            background: #c96149;
+        }
+
+        .index-main {
+            background: #fdfdfe;
+        }
+
+        .paper-main {
+            background: #247aac;
+        }
+
+        .wl-panel {
+            background: #247aac;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #247aac;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #247aac;
+        }
+    </style>
+
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Lau</a> 
+            <span class="description">Empty your mind. Be formless, shapeless, like water.</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/diary/">抒发</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            HashMap源码解读
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<pre><code>public class HashMap&lt;K,V&gt; extends AbstractMap&lt;K,V&gt;
+    implements Map&lt;K,V&gt;, Cloneable, Serializable &#123;
+//若在创建HashMap时指定大小，先将初始容量值经tableSizeFor()方法处理后复制给threshold
+this.threshold = tableSizeFor(initialCapacity);
+
+//返回一个大于等于传入参数的最小的二的幂次方的值，|=（或等于）
+static final int tableSizeFor(int cap) &#123;
+        int n = cap - 1; //若不-1,当cap已是二的幂次方时，返回的值会翻倍。
+        n |= n &gt;&gt;&gt; 1;	// n = n | n &gt;&gt;&gt; 1;
+        n |= n &gt;&gt;&gt; 2;
+        n |= n &gt;&gt;&gt; 4;
+        n |= n &gt;&gt;&gt; 8;
+        n |= n &gt;&gt;&gt; 16;
+        return (n &lt; 0) ? 1 : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+    &#125;
+
+//返回被替换的值，若没有此键的映射则返回null，null也可以表示被替换的value值为null
+public V put(K key, V value) &#123;
+        return putVal(hash(key), key, value, false, true);
+    &#125;
+
+/*将key的hashcode值与hashcode值无符号右移十六位后的值（即低十六位与高十六位）进行异或运算后返回，使用异或运算可等概率得到0和1，结果随机性更大，哈希碰撞概率随之减小*/
+static final int hash(Object key) &#123;
+        int h;
+        return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);
+    &#125;
+
+//往HashMap中插入值的具体实现
+final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+                   boolean evict) &#123;
+        Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; int n, i;
+        //Node&lt;K, V&gt; tab 未初始化或长度为0,进行resize()扩容操作
+        if ((tab = table) == null || (n = tab.length) == 0)
+            n = (tab = resize()).length;
+        /*i = (n - 1) &amp; hash，n-1后二进制低位都是1，与hash()方法返回的值进行与运算，结果值必然在n-1区间内，可实现取模运算，且位运算速度更快*/
+        if ((p = tab[i = (n - 1) &amp; hash]) == null)
+            tab[i] = newNode(hash, key, value, null);
+        else &#123;
+            Node&lt;K,V&gt; e; K k;
+            if (p.hash == hash &amp;&amp;
+                ((k = p.key) == key || (key != null &amp;&amp; key.equals(k))))
+                e = p;
+            else if (p instanceof TreeNode)
+                e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(this, tab, hash, key, value);
+            else &#123;
+                for (int binCount = 0; ; ++binCount) &#123;
+                    if ((e = p.next) == null) &#123;
+                        p.next = newNode(hash, key, value, null);
+                        /*链表节点数大于8时转红黑树，binCount从0开始，到7时已是第八个元素，且触发if已新增节点且还有次自增操作没完成就break，即链表中元素达到九个时才触发treeifyBin()*/
+                        if (binCount &gt;= TREEIFY_THRESHOLD - 1) // -1 for 1st
+                            treeifyBin(tab, hash);
+                        break;
+                    &#125;
+                    if (e.hash == hash &amp;&amp;
+                        ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))
+                        break;
+                    p = e;
+                &#125;
+            &#125;
+            if (e != null) &#123; // existing mapping for key
+                V oldValue = e.value;
+                if (!onlyIfAbsent || oldValue == null)
+                    e.value = value;
+                afterNodeAccess(e);
+                return oldValue;
+            &#125;
+        &#125;
+        ++modCount;
+        if (++size &gt; threshold)
+            resize();
+        afterNodeInsertion(evict);
+        return null;
+    &#125;
+
+//初始化或将数组大小翻倍
+final Node&lt;K,V&gt;[] resize() &#123;
+        Node&lt;K,V&gt;[] oldTab = table;
+        int oldCap = (oldTab == null) ? 0 : oldTab.length;
+        int oldThr = threshold;
+        int newCap, newThr = 0;
+        if (oldCap &gt; 0) &#123;
+            if (oldCap &gt;= MAXIMUM_CAPACITY) &#123;
+                threshold = Integer.MAX_VALUE;
+                return oldTab;
+            &#125;
+            else if ((newCap = oldCap &lt;&lt; 1) &lt; MAXIMUM_CAPACITY &amp;&amp;
+                     oldCap &gt;= DEFAULT_INITIAL_CAPACITY)
+                newThr = oldThr &lt;&lt; 1; // double threshold
+        &#125;
+        else if (oldThr &gt; 0) // initial capacity was placed in threshold
+            //如果指定了数组大小则将存放在threshold中的容量大小设置数组初始化长度
+            newCap = oldThr;
+        else &#123;               // zero initial threshold signifies using defaults
+            newCap = DEFAULT_INITIAL_CAPACITY;
+            newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);
+        &#125;
+        if (newThr == 0) &#123;
+            float ft = (float)newCap * loadFactor;
+            newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (float)MAXIMUM_CAPACITY ?
+                      (int)ft : Integer.MAX_VALUE);
+        &#125;
+        threshold = newThr;
+        @SuppressWarnings(&#123;&quot;rawtypes&quot;,&quot;unchecked&quot;&#125;)
+            //第一次调用put方法时，才逐步执行到这条语句创建数组，延迟加载，提高效率。
+            Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])new Node[newCap];
+        table = newTab;
+        if (oldTab != null) &#123;
+            for (int j = 0; j &lt; oldCap; ++j) &#123;
+                Node&lt;K,V&gt; e;
+                if ((e = oldTab[j]) != null) &#123;
+                    oldTab[j] = null;
+                    if (e.next == null)
+                        newTab[e.hash &amp; (newCap - 1)] = e;
+                    else if (e instanceof TreeNode)
+                        //split方法与下面对链表的处理类似
+                        ((TreeNode&lt;K,V&gt;)e).split(this, newTab, j, oldCap);
+                    else &#123; // preserve order
+                        //下标位置不需移动的链表
+                        Node&lt;K,V&gt; loHead = null, loTail = null;
+                        //下标位置需要移动的链表
+                        Node&lt;K,V&gt; hiHead = null, hiTail = null;
+                        Node&lt;K,V&gt; next;
+                        do &#123;
+                            next = e.next;
+                            /*(e.hash &amp; oldCap) == 0，判断元素所处下标位置是否需要移动。旧数组计算下标i = (n - 1) &amp; hash，新数组为就数组的两倍，则新数组下标计算为i = (2n - 1) &amp; hash，两者差别只在旧数组长度转为二进制的那位上。若e.hash &amp; oldCap的值为0，则该元素在新数组和旧数组的下标一致。*/
+                            if ((e.hash &amp; oldCap) == 0) &#123;
+                                if (loTail == null)
+                                    loHead = e;
+                                else
+                                    loTail.next = e;
+                                loTail = e;
+                            &#125;
+                            else &#123;
+                                if (hiTail == null)
+                                    hiHead = e;
+                                else
+                                    hiTail.next = e;
+                                hiTail = e;
+                            &#125;
+                        &#125; while ((e = next) != null);
+                        //原位置的链表，数组下标不变
+                        if (loTail != null) &#123;
+                            loTail.next = null;
+                            newTab[j] = loHead;
+                        &#125;
+                        //移动到新位置的链表，数组下标为原下标加旧数组长度
+                        if (hiTail != null) &#123;
+                            hiTail.next = null;
+                            newTab[j + oldCap] = hiHead;
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+        return newTab;
+    &#125;
+&#125;
+</code></pre>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-08-11</span>
+            
+                <span>该篇文章被 Limit Lau</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Java/'>
+                            Java
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%BA%90%E7%A0%81/'>
+                            源码
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2019-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>Rage, rage against the dying of the light🐭</span>
+            
+    
+</div>
+
+
+    
+        
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css">
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js"></script>
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js"></script>
+
+    
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>

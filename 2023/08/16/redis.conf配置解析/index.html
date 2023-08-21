@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="redis.conf配置翻译" />
+    <meta name="hexo-theme-A4" content="v1.6.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Lau | Learning..</title>
+
+    
+        
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css">
+ 
+            <!--注意：首页既不是post也不是page-->
+            
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #fdbb30; 
+            --waline-color: #fdbb30; 
+            --waline-border-color: #fdbb30; 
+            --waline-white: #fdbb30; 
+            --waline-bgcolor-light: #247aac;  
+        }
+        body {
+            color: #fdbb30;
+            background: #c96149;
+        }
+        .post-md code {
+            background: black;
+            color: white; 
+        }
+        .year-font-color {
+            color: #fdbb30 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #fdbb30; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #fdbb30;
+            color: #fdbb30; 
+        }
+        .wl-btn {
+            border: 1px solid #fdbb30; 
+            color:  #fdbb30;  
+        }
+        .wl-btn.primary {
+            color: #247aac; 
+        }
+        .wl-header label {
+            color: #fdbb30;
+        }
+        a {
+            color: #fec591;
+        }
+
+        .post-md a {
+            color: #fec591;
+        }
+
+        .nav li a {
+            color: #fec591;
+        }
+
+        .archive-main a:link {
+            color: #fec591;
+        }
+        .archive-main a:visited {
+            color: #002d62; 
+        }
+
+        .archive li span {
+            color: #fdbb30;
+        }
+
+        .post-main-title {
+            color: #fdbb30;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #fdbb30;
+        }
+
+        [data-waline] p {
+            color: #fdbb30;
+        }
+        [data-waline] a {
+            color: #fdbb30;
+        } 
+        .wl-sort li.active {
+            color: #fdbb30;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #247aac;
+        }
+
+        .paper {
+            background: #c96149;
+        }
+
+        .index-main {
+            background: #fdfdfe;
+        }
+
+        .paper-main {
+            background: #247aac;
+        }
+
+        .wl-panel {
+            background: #247aac;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #247aac;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #247aac;
+        }
+    </style>
+
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Lau</a> 
+            <span class="description">Empty your mind. Be formless, shapeless, like water.</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/diary/">抒发</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            redis.conf配置翻译
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>​					所有配置项的值都为默认值，Redis版本为7.2.0</p>
+<hr>
+<p>################################ SNAPSHOTTING  ################################</p>
+<p>#将数据保存到磁盘中，格式：save &lt;seconds&gt; &lt;changes&gt; [&lt;seconds&gt; &lt;changes&gt; …]</p>
+<p>#快照可用空字符串参数完全禁用，save “”</p>
+<p>#以下为默认设置，可解开注释显式地设置或调整其参数值</p>
+<p><strong>#save 3600 1 300 100 60 10000</strong></p>
+<p>​	</p>
+<p>#默认情况下若RDB快照开启且最后一次后台保存失败，Redis会停止接收写操作</p>
+<p>#如果后台保存进程再次开始工作，Redis将自动再次允许写入</p>
+<p>#如果设置了适当的Redis服务器监控和持久化，禁用此功能以保证Redis即使有磁盘、权限问题也能正常工作</p>
+<p><strong>stop-writes-on-bgsave-error yes</strong></p>
+<p>​	</p>
+<p>#在转储.rdb数据文件时，使用LZF压缩字符串对象</p>
+<p>#想在保存子线程中节省CPU可设为’no’，但如果有可压缩的值或键时数据集会更大</p>
+<p><strong>rdbcompression yes</strong></p>
+<p>​	</p>
+<p>#RDB版本5之后，文件末尾为CRC64校验和</p>
+<p>#可使格式更能抵抗损坏，但在保存和加载RDB文件时需消耗约10%左右的性能，禁用可获得最大性能</p>
+<p>#禁用校验和的RDB文件创建时将校验和设置0，加载代码会跳过检查</p>
+<p><strong>rdbchecksum yes</strong></p>
+<p>​	</p>
+<p>#加载RDB或RESTORE载荷时启动或禁用对ziplist和listpack等的完整清理检查，减少了断言或在处理命令时稍后崩溃</p>
+<p>#no：永不进行完全清理</p>
+<p>#yes：始终执行完全清理</p>
+<p>#clients：仅对用户连接执行，不包括RDB文件、从主服务器接收的RESTORE命令和有skip-sanitize-payload ACL标志的客户端连接</p>
+<p>#默认应为’clients’，但由于目前通过MIGRATE影响集群重新分片，暂时默认设置为’no’</p>
+<p><strong>#sanitize-dump-payload no</strong></p>
+<p>​	</p>
+<p>#转储数据的文件名</p>
+<p><strong>dbfilename dump.rdb</strong></p>
+<p>​	</p>
+<p>#删除未开启持久化的实例中复制使用的RDB文件，默认情况下是禁用的，但有些环境出于规则和其他安全考虑应该尽快删除，如</p>
+<p>#RDB文件由主服务器持久化到磁盘以便提供给从服务器，或由从服务器存入磁盘以便初始化同步时加载。</p>
+<p>#此选项仅适用于同时禁止AOF和RDB持久化的实例，否则将被忽略</p>
+<p>#获得相同效果（有时更好）的另一个方法是使在主和从实例上使用无磁盘复制，但在从服务器上无磁盘化不是总是一个选项</p>
+<p><strong>rdb-del-sync-files no</strong></p>
+<p>​	</p>
+<p>#快照文件存储的文件目录，只追加文件也会在这个目录中创建</p>
+<p><strong>dir .&#x2F;</strong></p>
+<p>############################## APPEND ONLY MODE ###############################</p>
+<p>#开启AOF持久化模式</p>
+<p><strong>appendonly no</strong></p>
+<p>​	</p>
+<p>#仅追加文件的名称</p>
+<p>#Redis 7使用一组只追加文件来持久化数据集并应用到它的更改，有两种使用的基本类型：</p>
+<p>#基础文件，表示文件创建时数据集的完整状态，基本文件可以是RDB也可以是AOF形式</p>
+<p>#增量文件，包含上一个文件的之后进行的操作命令</p>
+<p>#清单文件可被创建并应用于追踪文件和进入的顺序</p>
+<p>#- appendonly.aof.1.base.rdb as a base file.</p>
+<p>#- appendonly.aof.1.incr.aof, appendonly.aof.2.incr.aof as incremental files.</p>
+<p>#- appendonly.aof.manifest as a manifest file.</p>
+<p><strong>appendfilename “appendonly.aof”</strong></p>
+<p>​	</p>
+<p>#存储所有持久的仅追加文件的专用目录</p>
+<p><strong>appenddirname “appendonlydir”</strong></p>
+<p>​	</p>
+<p>#no：不进行fsync，让操作系统刷新输出缓冲区，更快</p>
+<p>#always：每次写入仅追加日志后fsync，慢但安全</p>
+<p>#everysec：每秒fsync一次，折中方案</p>
+<p>#appendfsync always</p>
+<p><strong>appendfsync everysec</strong></p>
+<p>#appendfsync no</p>
+<p>​	</p>
+<p>#当AOF fsync策略为always或everysec且后台保存进程（后台保存或后台重写）执行大量的I&#x2F;O操作时，在一些Linux的配置中，可能</p>
+<p>#会造成长时间阻塞。因为即使在不同的线程中执行fsync也会阻塞同步写方法调用</p>
+<p>#可用此选项防止BGSAVE或BEREWRITEOF在执行时主进程中调用fsync()</p>
+<p>#设置为yes则当子进程在保存时，Redis的持久性相当于”appendfsync no”。根据默认Linux设置最坏情况可能丢失三十秒的记录。</p>
+<p>#有延迟问题设置为“yes”，否则从持久性的角度来讲保留设置是最安全的选择</p>
+<p><strong>no-appendfsync-on-rewrite no</strong></p>
+<p>​	</p>
+<p>#自动重写只追加的文件，隐式调用BGREWRITEAOF</p>
+<p>#Redis会记录AOF文件最后一次重写后的文件大小</p>
+<p>#当前AOF文件大小超过记录的上次文件大小的百分比，设置为0关闭自动重写</p>
+<p><strong>auto-aof-rewrite-percentage 100</strong></p>
+<p>​	</p>
+<p>#指定重写AOF文件要达到的最小值</p>
+<p><strong>auto-aof-rewrite-min-size 64mb</strong></p>
+<p>​	</p>
+<p>#当运行Redis的系统崩溃时，特别是当ext4文件系统没有挂载data&#x3D;ordered选项时，可能导致AOF文件末尾被截断</p>
+<p>#当发生这种情况时，Redis可由此选项控制直接退出并返回错误还是尽可能多地加载数据并启动</p>
+<p>#设置为yes且加载到被截断文件时，Redis服务器会发送日志。设置为no时，可使用“redis-check-aof”工具修复AOF文件后再重新启动</p>
+<p>#若AOF在文件中间被发现损坏，服务仍然会退出并显示错误</p>
+<p><strong>aof-load-truncated yes</strong></p>
+<p>​	</p>
+<p>#Redis可创建RDB或AOF格式的只追加文件，RDB格式更快更高效，要兼容低版本可以禁止</p>
+<p><strong>aof-use-rdb-preamble yes</strong></p>
+<p>​	</p>
+<p>#Redis支持在AOF文件中记录时间戳注释，以支持恢复特定时间节点地数据。但此功能可能会改变AOF格式使其与AOF解析器不兼容</p>
+<p><strong>aof-timestamp-enabled no</strong></p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-08-16</span>
+            
+                <span>该篇文章被 Limit Lau</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/'>
+                            中间件
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%85%8D%E7%BD%AE/'>
+                            配置
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2019-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>Rage, rage against the dying of the light🐭</span>
+            
+    
+</div>
+
+
+    
+        
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css">
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js"></script>
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js"></script>
+
+    
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
