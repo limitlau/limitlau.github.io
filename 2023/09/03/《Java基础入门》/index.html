@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="《Java基础入门》" />
+    <meta name="hexo-theme-A4" content="v1.6.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Lau | Learning..</title>
+
+    
+        
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css">
+ 
+            <!--注意：首页既不是post也不是page-->
+            
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #fdbb30; 
+            --waline-color: #fdbb30; 
+            --waline-border-color: #fdbb30; 
+            --waline-white: #fdbb30; 
+            --waline-bgcolor-light: #247aac;  
+        }
+        body {
+            color: #fdbb30;
+            background: #c96149;
+        }
+        .post-md code {
+            background: black;
+            color: white; 
+        }
+        .year-font-color {
+            color: #fdbb30 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #fdbb30; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #fdbb30;
+            color: #fdbb30; 
+        }
+        .wl-btn {
+            border: 1px solid #fdbb30; 
+            color:  #fdbb30;  
+        }
+        .wl-btn.primary {
+            color: #247aac; 
+        }
+        .wl-header label {
+            color: #fdbb30;
+        }
+        a {
+            color: #fec591;
+        }
+
+        .post-md a {
+            color: #fec591;
+        }
+
+        .nav li a {
+            color: #fec591;
+        }
+
+        .archive-main a:link {
+            color: #fec591;
+        }
+        .archive-main a:visited {
+            color: #002d62; 
+        }
+
+        .archive li span {
+            color: #fdbb30;
+        }
+
+        .post-main-title {
+            color: #fdbb30;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #fdbb30;
+        }
+
+        [data-waline] p {
+            color: #fdbb30;
+        }
+        [data-waline] a {
+            color: #fdbb30;
+        } 
+        .wl-sort li.active {
+            color: #fdbb30;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #247aac;
+        }
+
+        .paper {
+            background: #c96149;
+        }
+
+        .index-main {
+            background: #fdfdfe;
+        }
+
+        .paper-main {
+            background: #247aac;
+        }
+
+        .wl-panel {
+            background: #247aac;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #247aac;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #247aac;
+        }
+    </style>
+
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Lau</a> 
+            <span class="description">Empty your mind. Be formless, shapeless, like water.</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/diary/">抒发</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            《Java基础入门》
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JAVA%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8"><span class="post-toc-text">JAVA基础入门</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E4%B8%8A"><span class="post-toc-text">面向对象(上)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85"><span class="post-toc-text">类的封装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%B0%81%E8%A3%85"><span class="post-toc-text">如何实现封装</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD%E5%92%8C%E9%80%92%E5%BD%92"><span class="post-toc-text">方法的重载和递归</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD"><span class="post-toc-text">方法的重载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E9%80%92%E5%BD%92"><span class="post-toc-text">方法的递归</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="post-toc-text">构造方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD"><span class="post-toc-text">构造方法的重载</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#this%E5%85%B3%E9%94%AE%E5%AD%97"><span class="post-toc-text">this关键字</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#static%E5%85%B3%E9%94%AE%E5%AD%97"><span class="post-toc-text">static关键字</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F"><span class="post-toc-text">静态变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="post-toc-text">静态方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="post-toc-text">静态代码块</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%8B%EF%BC%89"><span class="post-toc-text">面向对象（下）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="post-toc-text">类的继承</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%9B%86%E6%88%90%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="post-toc-text">集成的概念</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%87%8D%E5%86%99%E7%88%B6%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="post-toc-text">重写父类方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#super%E5%85%B3%E9%94%AE%E5%AD%97"><span class="post-toc-text">super关键字</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Object%E7%B1%BB"><span class="post-toc-text">Object类</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#final%E5%85%B3%E9%94%AE%E5%AD%97"><span class="post-toc-text">final关键字</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#final%E5%85%B3%E9%94%AE%E5%AD%97%E4%BF%AE%E9%A5%B0%E5%8F%98%E9%87%8F"><span class="post-toc-text">final关键字修饰变量</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3"><span class="post-toc-text">抽象类和接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="post-toc-text">抽象类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="post-toc-text">接口</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%9A%E6%80%81"><span class="post-toc-text">多态</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A4%9A%E6%80%81%E6%A6%82%E8%BF%B0"><span class="post-toc-text">多态概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="post-toc-text">对象的类型转换</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB"><span class="post-toc-text">成员内部类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB-1"><span class="post-toc-text">成员内部类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B1%80%E9%83%A8%E5%86%85%E9%83%A8%E7%B1%BB"><span class="post-toc-text">局部内部类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB"><span class="post-toc-text">静态内部类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB"><span class="post-toc-text">匿名内部类</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JDK8%E7%9A%84Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="post-toc-text">JDK8的Lambda表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3"><span class="post-toc-text">函数式接口</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%82%E5%B8%B8"><span class="post-toc-text">异常</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BC%82%E5%B8%B8"><span class="post-toc-text">什么是异常</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#try%E2%80%A6catch%E5%92%8Cfinally"><span class="post-toc-text">try…catch和finally</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#throws%E5%85%B3%E9%94%AE%E5%AD%97"><span class="post-toc-text">throws关键字</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#throw%E5%85%B3%E9%94%AE%E5%AD%97"><span class="post-toc-text">throw关键字</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Java%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E7%B1%BB"><span class="post-toc-text">Java中的常用类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#String%E7%B1%BB%E4%B8%8EStringBuffer%E7%B1%BB"><span class="post-toc-text">String类与StringBuffer类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#String%E7%B1%BB%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="post-toc-text">String类的初始化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#String%E7%B1%BB%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C"><span class="post-toc-text">String类的常见操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#StringBuffer%E7%B1%BB"><span class="post-toc-text">StringBuffer类</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#System%E7%B1%BB%E5%92%8CRuntime%E7%B1%BB"><span class="post-toc-text">System类和Runtime类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#System%E7%B1%BB"><span class="post-toc-text">System类</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="post-toc-text">包装类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E7%B1%BB"><span class="post-toc-text">日期和时间类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Calendar%E7%B1%BB"><span class="post-toc-text">Calendar类</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<h1 id="JAVA基础入门"><a href="#JAVA基础入门" class="headerlink" title="JAVA基础入门"></a>JAVA基础入门</h1><h2 id="面向对象-上"><a href="#面向对象-上" class="headerlink" title="面向对象(上)"></a>面向对象(上)</h2><h3 id="类的封装"><a href="#类的封装" class="headerlink" title="类的封装"></a>类的封装</h3><h4 id="如何实现封装"><a href="#如何实现封装" class="headerlink" title="如何实现封装"></a>如何实现封装</h4><p>类的封装，是指将对象的状态信息隐藏在对象内部，不允许外部程序直接访问对象的内部信息，而是通过该类所提供的方法来实现对内部信息的操作访问。</p>
+<h3 id="方法的重载和递归"><a href="#方法的重载和递归" class="headerlink" title="方法的重载和递归"></a>方法的重载和递归</h3><h4 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h4><p>在一个程序中定义多个名称相同，但是参数的类型或个数方法不同，这就是方法的重载。</p>
+<p>方法的重载与返回值类型无关，它只需要满足两个条件，一是方法名相同，二是参数个数或参数类型不同。</p>
+<h4 id="方法的递归"><a href="#方法的递归" class="headerlink" title="方法的递归"></a>方法的递归</h4><p>递归必须要有结束条件，不然就会陷入无限递归的状态，永远无法结束调用。</p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><h4 id="构造方法的重载"><a href="#构造方法的重载" class="headerlink" title="构造方法的重载"></a>构造方法的重载</h4><p>与普通方法一样，构造方法也可以重载，在一个类中可以定义多个构造方法，只要每个构造方法的参数类型或参数个数不同即可。</p>
+<h3 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h3><p>构造方法是在实例化对象时被Java虚拟机自动调用的，在程序中不能像调用其他方法一样去调用构造方法，但可以在一个构造方法中使用”this([参数1,参数2,…]})”的形式来调用其他的构造方法。</p>
+<p>在构造方法中，使用this调用构造方法的语句必须是该方法的第一条执行语句，且只能出现一次。</p>
+<p>不能在一个类的两个构造方法中使用this互相调用。</p>
+<h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><h4 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h4><p>static关键字只能用于修饰成员变量，不能用于修饰局部变量。</p>
+<h4 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h4><p>静态方法不需要创建对象就可以直接通过类名调用。</p>
+<p>通过实例化对象的方式，同样可以调用静态方法。</p>
+<h4 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h4><p>当类被加载时，静态代码块会执行，由于类只加载一次，因此静态代码块也只执行一次。</p>
+<p>静态代码块在类第一次使用时才会被加载，并且只会加载一次。</p>
+<h2 id="面向对象（下）"><a href="#面向对象（下）" class="headerlink" title="面向对象（下）"></a>面向对象（下）</h2><h3 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h3><h4 id="集成的概念"><a href="#集成的概念" class="headerlink" title="集成的概念"></a>集成的概念</h4><p>子类在继承父类的时候，会自动拥有父类所有公共的成员</p>
+<p>类只支持单继承，不允许多重继承，也就是说一个类只能有一个直接父类</p>
+<h4 id="重写父类方法"><a href="#重写父类方法" class="headerlink" title="重写父类方法"></a>重写父类方法</h4><p>子类中重写的方法需要和父类被重写的方法具有相同的方法名、参数列表和返回值类型</p>
+<p>子类重写父类方法时，不能使用比父类中被重写的方法更严格的访问权限。如父类中的方法访问权限是public，子类重写父类该方法的访问权限就不能是private。</p>
+<h4 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a>super关键字</h4><p>通过super调用父类构造方法的代码必须位于子类构造方法的第一行，并且只能出现一次，否则程序在编译期间就会报错。</p>
+<p>在定义一个类时，如果没有特殊需求，当定义了有参构造方法后，尽量在类中再显式地定义一个无参构造方法，这样可以避免该类被继承时出现错误。</p>
+<h4 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h4><p>当定义一个类时，如果没有使用extends关键字为这个类显式地指定父类，那么该类会默认继承Object类。</p>
+<h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3><p>final修饰的类不能被继承</p>
+<p>final修饰的方法不能被子类重写</p>
+<p>final修饰的变量（成员变量和局部变量）是常量，只能赋值一次。</p>
+<h4 id="final关键字修饰变量"><a href="#final关键字修饰变量" class="headerlink" title="final关键字修饰变量"></a>final关键字修饰变量</h4><p>final修饰的成员变量，必须在声明的同时进行赋值，否则编译报错。</p>
+<p>final修饰的局部变量，可以先声明，再进行一次赋值。</p>
+<h3 id="抽象类和接口"><a href="#抽象类和接口" class="headerlink" title="抽象类和接口"></a>抽象类和接口</h3><h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><p>包含抽象方法的类必须定义为抽象类，但抽象类中可以不包含任何抽象方法。</p>
+<p>抽象类是不可以被实例化的，因为抽象类中有可能包含抽象方法，抽象方法是没有方法体的，不可以被调用。</p>
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><p>接口是一种特殊的抽象类</p>
+<p>定义一个接口时，可以同时继承多个父接口，这也就是为了解决类的单继承的限制。</p>
+<p>接口中可以包含三类方法：抽象方法、默认方法和静态方法，其中静态方法可以通过“接口名.方法名”的形式来调用，而抽象方法和默认方法只能通过接口实现类的实例对象来调用。</p>
+<p>一个类可以在继承另一个类的同时实现多个接口，并且多个接口之间需要使用英文逗号（,）分割。</p>
+<p>接口的实现类，必须实现接口中的所有抽象方法，否则程序编译报错。</p>
+<p>一个类在继承一个类的同时还可以同时实现接口，此时，extends关键字必须位于implements关键字之前。</p>
+<p>多态</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h4 id="多态概述"><a href="#多态概述" class="headerlink" title="多态概述"></a>多态概述</h4><p>多态是指不同类的对象在调用同一个方法时所呈现出的多种不同行为。</p>
+<p>在一个类中定义的属性和方法被其他类继承或重写后，当把子类对象直接赋值给父类引用变量时，相同引用类型的变量调用同一个方法将呈现多种不同形态。</p>
+<p>通过多态，消除了类之间的耦合关系，大大提高了程序的可扩展性和可维护性。</p>
+<p>Java的多态性是由类的继承、方法重写以及父类引用指向子类对象体现的。</p>
+<p>多态不仅解决了方法同名的问题，而且还使程序变得更加灵活，从而有效地提高程序的可扩展性和可维护性。</p>
+<h4 id="对象的类型转换"><a href="#对象的类型转换" class="headerlink" title="对象的类型转换"></a>对象的类型转换</h4><p>当子类对象当做父类使用时不需要任何显式声明，需要注意的是，此时不能通过父类变量去调用子类特有的方法。</p>
+<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><p>在Java中，允许在一个类的内部定义类，这样的类称作内部类，这个内部类所在的类称作外部类。</p>
+<p>在实际情况中，根据内部类的位置、修饰符和定义方式的不同，内部类可以分为4种形式：成员内部类、局部内部类、静态内部类和匿名内部类。</p>
+<h4 id="成员内部类-1"><a href="#成员内部类-1" class="headerlink" title="成员内部类"></a>成员内部类</h4><p>在成员内部类中，可以访问外部类的所有成员，包括成员变量和成员方法；在外部类中，同样可以访问成员内部类的变量和方法。</p>
+<p>通过外部类对象创建内部类对象，这样可以操作内部类中的成员。</p>
+<p>外部类名.内部类名 变量名 &#x3D; new 外部类名().内部类名();</p>
+<h4 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h4><p>局部内部类，也叫做方法内部类，就是定义在某个局部范围中的类，它和局部变量一样，都是在方法中定义的，其有效范围只限于方法内部。</p>
+<p>在局部内部类中，局部内部类可以访问外部类的所有成员变量和方法，而局部内部类中的变量和方法却只能在创建该局部内部类的方法中进行访问。</p>
+<h4 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h4><p>与成员内部类相比，在形式上，静态内部类只是在内部类前增加了static关键字，但在功能上，静态内部类中只能访问外部类的静态成员，同时通过外部类访问静态内部类成员时，可以跳过外部类从而直接通过内部类访问静态内部类成员。</p>
+<p>外部类名.静态内部类名 变量名 &#x3D; new 外部类名.静态内部类名();</p>
+<h4 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h4><p>在Java中调用某个方法时，如果该方法的参数是一个接口类型，除了可以传入一个参数接口实现类，还可以使用匿名内部类实现接口来作为该方法的的参数。</p>
+<p>匿名内部类其实就是没有名称的内部类，在调用包含有接口类型参数的方法时，通常为了简化代码，不会创建一个接口的实现类作为方法参数传入，而是直接通过匿名内部类的形式传入一个接口类型参数，在匿名内部类中直接完成方法的实现。</p>
+<p>JDK8开始，局部内部类、匿名内部类可以访问非final的局部变量。</p>
+<h3 id="JDK8的Lambda表达式"><a href="#JDK8的Lambda表达式" class="headerlink" title="JDK8的Lambda表达式"></a>JDK8的Lambda表达式</h3><h4 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h4><p>Lambda表达式是基于函数式接口实现的，所谓函数式接口是指有且仅有一个抽象方法的接口，Lambda表达式就是Java中函数式编程的体现，只有确保接口中有且仅有一个抽象方法，Lambda表达式才能顺利地推导出所实现的这个接口中的方法。</p>
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><h4 id="什么是异常"><a href="#什么是异常" class="headerlink" title="什么是异常"></a>什么是异常</h4><p>Error类称为错误类，它表示Java运行时产生的系统内部错误或资源耗尽的错误，是比较严重的，仅靠修改程序本身是不能恢复执行的，如系统奔溃，虚拟机错误等。</p>
+<p>Exception类称为异常类，它表示程序本身可以处理的错误。</p>
+<p>在Exception类的众多子类中有一个特殊的RuntimeException类，该类及其子类用于表示运行时异常。除了此类，Exception类下所有其他的子类都用于表示编译时异常。</p>
+<h4 id="try…catch和finally"><a href="#try…catch和finally" class="headerlink" title="try…catch和finally"></a>try…catch和finally</h4><p>try{}代码块中包含的是可能发生异常的语句，catch(){}代码块中编写针对捕获的异常进行处理的代码。</p>
+<p>在try{}代码块中，发生异常语句后面的代码是不会被执行的。</p>
+<p>finally{}代码块，用于处理无论程序是否发生异常都要执行的语句，该代码块并不受return语句和程序异常的影响。</p>
+<p>finally中的代码在一种情况下是不会执行的，那就是在try…catch中执行了System.exit(0)语句。System.exit(0)表示退出当前的Java虚拟机，Java虚拟机停止了，任何代码都不能再执行了。</p>
+<h4 id="throws关键字"><a href="#throws关键字" class="headerlink" title="throws关键字"></a>throws关键字</h4><p>当调用者在调用有抛出异常的方法时，除了可以在调用程序中直接进行try…catch异常处理外，也可以根据提示使用throws关键字继续将异常抛出，这样程序也能编译通过。但是，程序发生了异常，终究是需要进行处理的，如果没有被处理，程序就会非正常终止。</p>
+<h4 id="throw关键字"><a href="#throw关键字" class="headerlink" title="throw关键字"></a>throw关键字</h4><p>与throws有所不同的是，throw用于方法体内，并且抛出的是一个异常类对象，而throws关键字用在方法声明中，用来指明方法可能抛出的多个异常。</p>
+<p>通过throw关键字抛出异常后，还需要使用throws关键字或try…catch对异常进行处理。需要注意的是，如果throw抛出的是Error、RuntimeException或它们的子类异常对象，则无须使用throws关键字或try…catch对异常进行处理。</p>
+<p>对于代码中的的业务逻辑异常，使用throw关键字抛出异常后，同样可以正确捕获异常，从而保证程序的正常运行。当然，throw关键字除了可以抛出代码的逻辑性异常外。也可以抛出Java能够自动识别的异常。</p>
+<h2 id="Java中的常用类"><a href="#Java中的常用类" class="headerlink" title="Java中的常用类"></a>Java中的常用类</h2><h3 id="String类与StringBuffer类"><a href="#String类与StringBuffer类" class="headerlink" title="String类与StringBuffer类"></a>String类与StringBuffer类</h3><h4 id="String类的初始化"><a href="#String类的初始化" class="headerlink" title="String类的初始化"></a>String类的初始化</h4><p>在Java中，如果+的两边操作数有一个为String类型，那么+就表示字符串连接运算符。</p>
+<h4 id="String类的常见操作"><a href="#String类的常见操作" class="headerlink" title="String类的常见操作"></a>String类的常见操作</h4><p>equals()方法用于比较两个字符串中的字符值是否相等，&#x3D;&#x3D;方法用于比较两个字符串对象的内存地址是否相同。</p>
+<h4 id="StringBuffer类"><a href="#StringBuffer类" class="headerlink" title="StringBuffer类"></a>StringBuffer类</h4><p>由于String类是final类型的，所以使用String定义的字符串是一个常量，因此它一旦创建，其内容和长度是不可变的。</p>
+<p>StringBuffer类似一个字符容器，当在其中添加或删除字符时，所操作的都是这个字符容器，因此并不会产生新的StringBuffer对象。</p>
+<p>StringBuffer对象的delete()方法用于删除指定位置的字符，包含起始索引，不包含结束索引，setCharAt()和replace()方法用于替换指定位置的字符。</p>
+<p>在操作字符串时，如果该字符串仅用于表示数据类型，则使用String类即可，但是如果需要对字符串中的字符进行增删操作，则使用StringBuffer类。</p>
+<p>StringBuffer类时线程安全的，而StringBuilder没有实现线程安全功能，所以性能略高。通常情况下，如果创建一个内容可变的字符串对象，应该优先考虑StringBuilder类。</p>
+<h3 id="System类和Runtime类"><a href="#System类和Runtime类" class="headerlink" title="System类和Runtime类"></a>System类和Runtime类</h3><h4 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h4><p>System类定义了一些与系统相关的属性和方法，它所提供的属性和方法都是静态的，因此，想要引用这些属性和方法，直接使用System类调用即可。</p>
+<h3 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h3><p>包装类和基本数据类型在进行转换时，引入了自动装箱（Autoboxing）和自动拆箱（AutoUnboxing）的概念，其中自动装箱是指将基本数据类型的变量赋给对应的包装类变量；反之，拆箱是指将包装类对象类型直接赋给一个对应的基本数据类型变量。</p>
+<p>除了Character外，包装类都有valueOf(String s)方法 ，可以根据String类型的参数创建包装类对象，还都有parseXxx(String s)的静态方法，将字符串转换为对应的基本数据类型。但参数字符串s不能为null，而且字符串必须是可以解析为相应基本数据类型的数据，否则虽然编译通过，但运行时会报错。</p>
+<h3 id="日期和时间类"><a href="#日期和时间类" class="headerlink" title="日期和时间类"></a>日期和时间类</h3><h4 id="Calendar类"><a href="#Calendar类" class="headerlink" title="Calendar类"></a>Calendar类</h4><p>Calendar类是一个抽象类，不可以被实例化，在程序中需要调用其静态方法getInstance()来得到一个Calendar对象，然后才能调用其对应的方法。</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-03</span>
+            
+                <span>该篇文章被 Limit Lau</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/'>
+                            更新中
+                        </a>
+                    
+                        <a href='/tags/Java/'>
+                            Java
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%91%98%E6%8A%84/'>
+                            摘抄
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2019-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>Rage, rage against the dying of the light🐭</span>
+            
+    
+</div>
+
+
+    
+        
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css">
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js"></script>
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js"></script>
+
+    
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
