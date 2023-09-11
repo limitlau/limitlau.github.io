@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Git Cheat Sheet" />
+    <meta name="hexo-theme-A4" content="v1.6.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Lau | Learning..</title>
+
+    
+        
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css">
+ 
+            <!--注意：首页既不是post也不是page-->
+            
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #fdbb30; 
+            --waline-color: #fdbb30; 
+            --waline-border-color: #fdbb30; 
+            --waline-white: #fdbb30; 
+            --waline-bgcolor-light: #247aac;  
+        }
+        body {
+            color: #fdbb30;
+            background: #c96149;
+        }
+        .post-md code {
+            background: black;
+            color: white; 
+        }
+        .year-font-color {
+            color: #fdbb30 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #fdbb30; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #fdbb30;
+            color: #fdbb30; 
+        }
+        .wl-btn {
+            border: 1px solid #fdbb30; 
+            color:  #fdbb30;  
+        }
+        .wl-btn.primary {
+            color: #247aac; 
+        }
+        .wl-header label {
+            color: #fdbb30;
+        }
+        a {
+            color: #fec591;
+        }
+
+        .post-md a {
+            color: #fec591;
+        }
+
+        .nav li a {
+            color: #fec591;
+        }
+
+        .archive-main a:link {
+            color: #fec591;
+        }
+        .archive-main a:visited {
+            color: #002d62; 
+        }
+
+        .archive li span {
+            color: #fdbb30;
+        }
+
+        .post-main-title {
+            color: #fdbb30;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #fdbb30;
+        }
+
+        [data-waline] p {
+            color: #fdbb30;
+        }
+        [data-waline] a {
+            color: #fdbb30;
+        } 
+        .wl-sort li.active {
+            color: #fdbb30;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #247aac;
+        }
+
+        .paper {
+            background: #c96149;
+        }
+
+        .index-main {
+            background: #fdfdfe;
+        }
+
+        .paper-main {
+            background: #247aac;
+        }
+
+        .wl-panel {
+            background: #247aac;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #247aac;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #247aac;
+        }
+    </style>
+
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Lau</a> 
+            <span class="description">Empty your mind. Be formless, shapeless, like water.</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/diary/">抒发</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Git Cheat Sheet
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="post-toc-text">设置与配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="post-toc-text">文件操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%86%E6%94%AF%E4%B8%8E%E5%90%88%E5%B9%B6"><span class="post-toc-text">分支与合并</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="post-toc-text">远程仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2"><span class="post-toc-text">提交历史</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%87%E7%AD%BE"><span class="post-toc-text">标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%82%A8%E8%97%8F"><span class="post-toc-text">储藏</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AD%9B%E9%80%89"><span class="post-toc-text">筛选</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8F%90%E4%BA%A4%E7%AE%A1%E7%90%86"><span class="post-toc-text">提交管理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AD%90%E6%A8%A1%E5%9D%97%E3%80%81%E5%AD%90%E6%A0%91%E5%92%8C%E9%AB%98%E7%BA%A7%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="post-toc-text">子模块、子树和高级子模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%92%A9%E5%AD%90%E5%92%8C%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%8C%E4%BB%A5%E5%8F%8ADiff%E5%92%8C%E5%90%88%E5%B9%B6%E5%B7%A5%E5%85%B7"><span class="post-toc-text">钩子和自动化，以及Diff和合并工具</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E8%A1%A5%E4%B8%81"><span class="post-toc-text">使用补丁</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%8F%E4%BD%9C"><span class="post-toc-text">协作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%86%E5%89%B2%E3%80%81%E8%B0%83%E8%AF%95%E5%92%8C%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98"><span class="post-toc-text">分割、调试和性能问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8A%80%E5%B7%A7%E5%92%8C%E7%AA%8D%E9%97%A8"><span class="post-toc-text">技巧和窍门</span></a></li></ol>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="设置与配置"><a href="#设置与配置" class="headerlink" title="设置与配置"></a>设置与配置</h2><pre><code># 初始化一个新的仓库
+git init
+# 克隆并创建远程仓库的本地副本
+git clone &lt;url&gt;
+# 配置全局设置
+git config --global &lt;setting_name&gt; &lt;value&gt;
+# 为指定的仓库配置本地设置
+git config --local &lt;setting_name&gt; &lt;value&gt;
+
+# --------------- Advanced ------------------
+
+# 显示配置的设置的概要
+git config --list
+# 给消息设置自定义文本编辑器
+git config --global core.editor &quot;&lt;editor_command&gt;&quot;
+# 创建命令别名
+git config --global alias.&lt;shortcut&gt; &lt;command&gt;
+# 开启输出的自动着色
+git config --global color.ui auto
+# 缓存一段时间的凭证
+git config --global credential.helper &#39;cache --timeout=&lt;seconds&gt;&#39;
+# 配置以检测特定类型的空白错误
+git config --global core.whitespace &lt;options&gt;
+# 获取更新时自动修剪远程追踪分支
+git config --global fetch.prune true
+# 设置自定义diff工具
+git config --global diff.tool &lt;tool&gt;
+# 设置自定义合并工具
+git config --global merge.tool &lt;tool&gt;
+# 用自定义diff工具比较修改
+git difftool
+# 用自定义合并工具解决合并冲突
+git mergetool
+</code></pre>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><pre><code># 展示工作树状态
+git status
+# 添加文件到暂存区
+git add &lt;file(s)&gt;
+# 从工作树和暂存区删除文件
+git rm &lt;file(s)&gt;
+# 移动或重命名文件
+git mv &lt;old_file&gt; &lt;new_file&gt;
+# 提交带有消息的更改
+git commit -m &quot;commit message&quot;
+# 显示工作数和上次提交之间的差别
+git diff
+
+# --------------- Advanced ------------------
+
+# 假定追踪的文件没有修改
+git update-index --assume-unchanged &lt;file&gt;
+# 恢复追踪的修改的正常行为
+git update-index --no-assume-unchanged &lt;file&gt;
+# 显示两次提交之间的差异
+git diff &lt;commit_id1&gt;..&lt;commit_id2&gt;
+# 从暂存区移除文件，但保留在工作目录中
+git rm --cached &lt;file_name&gt;
+</code></pre>
+<h2 id="分支与合并"><a href="#分支与合并" class="headerlink" title="分支与合并"></a>分支与合并</h2><pre><code># 列出分支
+git branch
+# 创建一个新的分支
+git branch &lt;branch_name&gt;
+# 切换到指定分支
+git checkout &lt;branch_name&gt;
+# 将分支合并到当前分支
+git merge &lt;branch_name&gt;
+# 删除指定分支
+git branch -d &lt;branch_name&gt;
+# 列出远程分支
+git branch -r
+
+# --------------- Advanced ------------------
+
+# 列出带有附近信息的分支
+git branch -vv
+# 基于远程分支创建新的分支
+git checkout -b &lt;branch_name&gt; &lt;remote_name&gt;/&lt;remote_branch&gt;
+# 产生冲突时取消合并
+git merge --abort
+# 将当前分支重新定位到另一个分支上
+git rebase &lt;branch_name&gt;
+# 取消正在进行的重置操作
+git rebase --abort
+# 可编辑、压缩、重新排序或删除提交的交互式重置
+git rebase -i
+# 以交互的方式将当前分支的提交重置到远程分支上
+git rebase -i &lt;remote_name&gt;/&lt;remote_branch&gt;
+</code></pre>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><pre><code># 列出远程仓库
+git remote
+# 添加远程仓库
+git remote add &lt;name&gt; &lt;url&gt;
+# 从远程仓库中获取
+git fetch &lt;remote_name&gt;
+# 从远程分支拉取修改
+git pull &lt;remote_name&gt; &lt;remote_branch&gt;
+# 将修改推送到远程仓库
+git push &lt;remote_name&gt; &lt;local_branch&gt;
+# 移除远程仓库
+git remote rm &lt;remote_name&gt;
+# 显示指定远程仓库信息
+git remote show &lt;remote_name&gt;
+# 显示远程仓库中的追踪分支
+git remote show &lt;remote_name&gt; --verbose
+
+# --------------- Advanced -------------------
+
+# 从远程仓库中获取更新
+git remote update
+# 将修改强制推送到远程仓库，覆盖远程记录
+git push --force &lt;remote_name&gt; &lt;local_branch&gt;
+# 将标记推送到远程仓库
+git push --tags &lt;remote_name&gt;
+# 重命名远程仓库
+git remote rename &lt;old_name&gt; &lt;new_name&gt;
+# 修改远程仓库的URL
+git remote set-url &lt;name&gt; &lt;new_url&gt;
+# 删除旧的远程追踪分支
+git remote prune &lt;remote_name&gt;
+# 列出已合并到当前分支中的远程分支
+git branch -r --merged
+# 列出还未合并到当前分支的远程分支
+git branch -r --no-merged
+# 从远程仓库获取更新并删除废弃的远程追踪分支
+git fetch -p
+
+# 追踪远程分支并设置本地分支自动与之同步
+git branch --track &lt;branch_name&gt; &lt;remote_name&gt;/&lt;remote_branch&gt;
+# 设置本地现有分支以追踪远程分支
+git branch -u &lt;remote_name&gt;/&lt;remote_branch&gt;
+# 将分支推送到远程仓库并设置其追踪远程分支
+git push -u &lt;remote_name&gt; &lt;local_branch&gt;
+# 删除本地分支与远程分支的追踪关联
+git branch --unset-upstream &lt;branch_name&gt;
+</code></pre>
+<h2 id="提交历史"><a href="#提交历史" class="headerlink" title="提交历史"></a>提交历史</h2><pre><code># 显示提交历史
+git log
+# 显示浓缩的提交历史
+git log --oneline
+# 显示分支提交历史
+git log --graph
+# 按作者过滤提交历史
+git log --author=&lt;author_name&gt;
+# 显示指定日期后的提交历史
+git log --since=&lt;date&gt;
+# 显式指定日期前的提交历史
+git log --until=&lt;date&gt;
+</code></pre>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><pre><code># 列出标签
+git tag
+# 在指定的提交上创建标签
+git tag &lt;tag_name&gt; &lt;commit_id&gt;
+# 创建带有消息的带注释标签
+git tag -a &lt;tag_name&gt; -m &quot;tag message&quot;
+# 删除指定标签
+git tag -d &lt;tag_name&gt;
+# 删除指定的远程标签
+git push &lt;remote_name&gt; --delete &lt;tag_name&gt;
+# 显示指定的标签相关信息
+git show &lt;tag_name&gt;
+</code></pre>
+<h2 id="储藏"><a href="#储藏" class="headerlink" title="储藏"></a>储藏</h2><pre><code># 在工作树中临时保存更改
+git stash save &quot;stash message&quot;
+# 列出储藏
+git stash list
+# 应用指定储藏中的更改
+git stash apply &lt;stash&gt;
+# 移除指定储藏
+git stash drop &lt;stash&gt;
+# 移除所有储藏
+git stash clear
+</code></pre>
+<h2 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h2><pre><code># 将指定的提交从一个分支应用到另一个分支
+git cherry-pick &lt;commit_id&gt;
+</code></pre>
+<h2 id="提交管理"><a href="#提交管理" class="headerlink" title="提交管理"></a>提交管理</h2><pre><code># Modify the latest commit
+git commit --amend
+# Create a new commit that undoes changes from a previous commit
+git revert &lt;commit_id&gt;
+# Discard changes and move HEAD to a specific commit
+git reset --hard &lt;commit_id&gt;
+# Move HEAD to a specific commit, but preserve staged changes
+git reset --soft &lt;commit_id&gt;
+# Show a record of all changes made to the local repository head
+git reflog
+</code></pre>
+<h2 id="子模块、子树和高级子模块"><a href="#子模块、子树和高级子模块" class="headerlink" title="子模块、子树和高级子模块"></a>子模块、子树和高级子模块</h2><pre><code># 向当前仓库中添加一个子模块
+git submodule add &lt;repository_url&gt; &lt;path&gt;
+# 递归地初始化和更新所有子模块
+git submodule update --init --recursive
+# 向当前仓库中添加一个子树
+git subtree add --prefix=&lt;path&gt; &lt;repository_url&gt;
+# 初始化仓库中的子模块
+git submodule init
+# 将子模块更新到最近提交的版本
+git submodule update
+# 在每个子模块中执行指定的命令
+git submodule foreach &lt;command&gt;
+# 注销子模块
+git submodule deinit &lt;path&gt;
+</code></pre>
+<h2 id="钩子和自动化，以及Diff和合并工具"><a href="#钩子和自动化，以及Diff和合并工具" class="headerlink" title="钩子和自动化，以及Diff和合并工具"></a>钩子和自动化，以及Diff和合并工具</h2><pre><code># 定位Git仓库中的hooks目录（通常在.git/hooks/)
+git hooks
+# 可添加至hooks目录中的特定钩子的脚本名称
+pre-commit, post-commit, pre-push, post-merge, etc.
+# 使钩子脚本可执行，确保在必要时被触发
+chmod +x &lt;hook_script&gt;
+</code></pre>
+<h2 id="使用补丁"><a href="#使用补丁" class="headerlink" title="使用补丁"></a>使用补丁</h2><pre><code># 为一次指定的提交生成补丁文件
+git format-patch &lt;commit_id&gt;
+# 对当前分支使用补丁
+git apply &lt;patch_file&gt;
+# 通过&quot;git am&quot; (apply mailbox) 命令使用补丁
+git am &lt;patch_file&gt;
+</code></pre>
+<h2 id="协作"><a href="#协作" class="headerlink" title="协作"></a>协作</h2><pre><code># 生成包含两次提交之间更改的请求-拉取概述
+git request-pull &lt;start_commit&gt; &lt;end_commit&gt; &lt;url&gt;
+# 总结提交历史，列出作者和他们的贡献
+git shortlog
+# 列出Git追踪的文件
+git ls-files
+# 在Git追踪的文件中搜索指定的模式
+git grep &lt;pattern&gt;
+</code></pre>
+<h2 id="分割、调试和性能问题"><a href="#分割、调试和性能问题" class="headerlink" title="分割、调试和性能问题"></a>分割、调试和性能问题</h2><pre><code># 开始一个平分会话来查找引入漏洞的提交
+git bisect start
+# 标记提交为“坏”，表示包含漏洞
+git bisect bad &lt;commit_id&gt;
+# 标记提交为“良好”，表示未包含漏洞
+git bisect good &lt;commit_id&gt;
+# 结束平分会话并返回到原始分支/提交
+git bisect reset
+# 验证Git仓库的完整性
+git fsck
+# 运行垃圾收集以优化仓库的性能
+git gc
+# 移除未追踪的文件和目录（谨慎使用）
+git clean -df
+</code></pre>
+<h2 id="技巧和窍门"><a href="#技巧和窍门" class="headerlink" title="技巧和窍门"></a>技巧和窍门</h2><pre><code># 交互式地选择要添加的文件
+git add -p
+
+# 显示指定文件的提交历史和相关补丁
+git log -p &lt;file_name&gt;
+# 自定义Git日志输出格式
+git log --pretty=format:&quot;%h - %an, %ar : %s&quot;
+# 在提交消息中查找文本（适用于定位特定变更）
+git log --grep=&quot;&lt;text&gt;&quot;
+# 快速查看自上次提交以来的工作目录的更改
+git diff --stat
+# 显示带装饰的分支历史记录，以查看分支分裂或合并的位置
+git log --oneline --decorate --graph
+
+# 将更改保存在工作树中，包括未追踪的文件
+git stash save -u
+# 创建一个空提交，测试分支保护规则时很有用
+git commit --allow-empty -m &quot;Empty commit message&quot;
+
+# 设置Git输出页少于一个屏幕时退出，显示后不清除屏幕
+git config --global core.pager &#39;less -RFX&#39;
+# 使用Git的自动校正功能来修复输错的命令
+git config --global help.autocorrect 1
+# 列出Git命令的别名
+git config --get-regexp alias
+
+# 以不实际合并分支的形式执行合并操作
+git merge --no-commit --no-ff &lt;branch_name&gt;
+# 显示仓库结构的树状表示
+git ls-tree --name-only -r -t HEAD
+</code></pre>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-11</span>
+            
+                <span>该篇文章被 Limit Lau</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%91%BD%E4%BB%A4/'>
+                            命令
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2019-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>Rage, rage against the dying of the light🐭</span>
+            
+    
+</div>
+
+
+    
+        
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css">
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js"></script>
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js"></script>
+
+    
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
