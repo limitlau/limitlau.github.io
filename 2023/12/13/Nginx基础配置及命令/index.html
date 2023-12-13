@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Nginx配置及命令" />
+    <meta name="hexo-theme-A4" content="v1.6.9" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Lau | Learning..</title>
+
+    
+        
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css">
+
+            
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css">
+ 
+            <!--注意：首页既不是post也不是page-->
+            
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #fdbb30; 
+            --waline-color: #fdbb30; 
+            --waline-border-color: #fdbb30; 
+            --waline-white: #fdbb30; 
+            --waline-bgcolor-light: #247aac;  
+        }
+        body {
+            color: #fdbb30;
+            background: #c96149;
+        }
+        .post-md code {
+            background: black;
+            color: white; 
+        }
+        .year-font-color {
+            color: #fdbb30 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #fdbb30; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #fdbb30;
+            color: #fdbb30; 
+        }
+        .wl-btn {
+            border: 1px solid #fdbb30; 
+            color:  #fdbb30;  
+        }
+        .wl-btn.primary {
+            color: #247aac; 
+        }
+        .wl-header label {
+            color: #fdbb30;
+        }
+        a {
+            color: #fec591;
+        }
+
+        .post-md a {
+            color: #fec591;
+        }
+
+        .nav li a {
+            color: #fec591;
+        }
+
+        .archive-main a:link {
+            color: #fec591;
+        }
+        .archive-main a:visited {
+            color: #002d62; 
+        }
+
+        .archive li span {
+            color: #fdbb30;
+        }
+
+        .post-main-title {
+            color: #fdbb30;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #fdbb30;
+        }
+
+        [data-waline] p {
+            color: #fdbb30;
+        }
+        [data-waline] a {
+            color: #fdbb30;
+        } 
+        .wl-sort li.active {
+            color: #fdbb30;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #247aac;
+        }
+
+        .paper {
+            background: #c96149;
+        }
+
+        .index-main {
+            background: #fdfdfe;
+        }
+
+        .paper-main {
+            background: #247aac;
+        }
+
+        .wl-panel {
+            background: #247aac;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #247aac;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #247aac;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #247aac;
+        }
+    </style>
+
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Lau</a> 
+            <span class="description">Empty your mind. Be formless, shapeless, like water.</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Nginx配置及命令
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>配置文件nginx.conf，使用nginx -t检查文件位置和配置是否正确</p>
+<pre><code># 全局块
+worker_processes 1;
+events &#123;
+    # 指定使⽤哪种⽹络IO模型，只能在events块中进⾏配置
+    # use epoll
+
+    # 每个worker process允许的最⼤连接数
+    worker_connections 1024;
+&#125;
+http &#123;
+    # nginx 可以使⽤include指令引⼊其他配置⽂件
+    include /etc/nginx/mime.types;
+    # 默认类型，如果请求的URL没有包含⽂件类型，会使⽤默认类型
+    default_type application/octet-stream; # 默认类型
+    # 开启⾼效⽂件传输模式
+    sendfile on;
+    # 连接超时时间
+    keepalive_timeout 65;
+    # access_log ⽇志存放路径和类型
+    # 格式为： access_log &lt;path&gt; [format [buffer=size] [gzip[=level]] [flush=time] [if=condition]];
+    access_log /var/log/nginx/access.log main;
+    # 定义⽇志格式
+    log_format main &#39;$remote_addr - $remote_user [$time_local]
+                    &quot;$request&quot; &#39;&#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
+                    &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
+    # 设置sendfile最⼤传输⽚段⼤⼩，默认为0，表示不限制
+    # sendfile_max_chunk 1m;
+    # 每个连接的请求次数
+    # keepalive_requests 100;
+    # keepalive超时时间
+    keepalive_timeout 65;
+    # 开启gzip压缩
+    # gzip on;
+    # 开启gzip压缩的最⼩⽂件⼤⼩
+    # gzip_min_length 1k;
+    # gzip压缩级别， 1-9，级别越⾼压缩率越⾼，但是消耗CPU资源也越多
+    # gzip_comp_level 2;
+    # gzip压缩⽂件类型
+    # gzip_types text/plain application/javascript application/xjavascript text/css application/xml text/javascript application/x-httpdphp image/jpeg image/gif image/png;
+    # upstream指令⽤于定义⼀组服务器，⼀般⽤来配置反向代理和负载均衡
+    upstream www.example.com &#123;
+    # ip_hash指令⽤于设置负载均衡的⽅式， ip_hash表示使⽤客户端的IP进⾏hash，
+    这样可以保证同⼀个客户端的请求每次都会分配到同⼀个服务器，解决了session共享的问题
+    ip_hash;
+    # weight ⽤于设置权重，权重越⾼被分配到的⼏率越⼤
+    server 192.168.50.11:80 weight=3;
+    server 192.168.50.12:80;
+    server 192.168.50.13:80;
+    &#125;
+    server &#123;
+        # 监听IP和端⼝
+        # listen的格式为：
+        # listen [ip]:port [default_server] [ssl] [http2] [spdy]
+        [proxy_protocol] [setfib=number] [fastopen=number] [backlog=number];
+        # listen指令⾮常灵活，可以指定多个IP和端⼝，也可以使⽤通配符
+        # 下⾯是⼏个实际的例⼦：
+        # listen 127.0.0.1:80; # 监听来⾃127.0.0.1的80端⼝的请求
+        # listen 80; # 监听来⾃所有IP的80端⼝的请求
+        # listen *:80; # 监听来⾃所有IP的80端⼝的请求，同上
+        # listen 127.0.0.1; # 监听来⾃来⾃127.0.0.1的80端⼝，默认端⼝为80
+        listen 80;
+        # server_name ⽤来指定虚拟主机的域名，可以使⽤精确匹配、通配符匹配和正则匹配等
+        ⽅式
+        # server_name example.org www.example.org; # 精确匹配
+        # server_name *.example.org; # 通配符匹配
+        # server_name ~^www\d+\.example\.net$; # 正则匹配
+        server_name localhost;
+        # location块⽤来配置请求的路由，⼀个server块可以包含多个location块，每个
+        location块就是⼀个请求路由
+        # location块的格式是：
+        # location [=|~|~*|^~] /uri/ &#123; ... &#125;
+        # = 表示精确匹配，只有完全匹配上才能⽣效# ~ 表示区分⼤⼩写的正则匹配
+        # ~* 表示不区分⼤⼩写的正则匹配
+        # ^~ 表示普通字符匹配，如果匹配成功，则不再匹配其他location
+        # /uri/ 表示请求的URI，可以是字符串，也可以是正则表达式
+        # &#123; ... &#125; 表示location块的配置内容
+        location / &#123;
+            # root指令⽤于指定请求的根⽬录，可以是绝对路径，也可以是相对路径
+            root /usr/share/nginx/html; # 根⽬录
+            # index指令⽤于指定默认⽂件，如果请求的是⽬录，则会在⽬录下查找默认⽂件
+            index index.html index.htm; # 默认⽂件
+            &#125;
+        # 下⾯是⼀些location的示例：
+        location = / &#123; # 精确匹配请求
+            root /usr/share/nginx/html;
+            index index.html index.htm;
+            &#125;
+        location ^~ /images/ &#123; # 匹配以/images/开头的请求
+            root /usr/share/nginx/html;
+            &#125;
+        location ~* \.(gif|jpg|jpeg)$ &#123; # 匹配以gif、 jpg或者jpeg结尾的请求
+            root /usr/share/nginx/html;
+            &#125;
+        location !~ \.(gif|jpg|jpeg)$ &#123; # 不匹配以gif、 jpg或者jpeg结尾的请求
+            root /usr/share/nginx/html;
+            &#125;
+        location !~* \.(gif|jpg|jpeg)$ &#123; # 不匹配以gif、 jpg或者jpeg结尾的请求
+            root /usr/share/nginx/html;
+            &#125;
+        # error_page ⽤于指定错误⻚⾯，可以指定多个，按照优先级从⾼到低依次查找
+        error_page 500 502 503 504 /50x.html; # 错误⻚⾯
+        location = /50x.html &#123;
+            root /usr/share/nginx/html;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>nginx常用命令：</p>
+<ul>
+<li>nginx # 启动Nginx</li>
+<li>nginx -c filename # 指定配置⽂件</li>
+<li>nginx -V # 查看Nginx的版本和编译参数等信息</li>
+<li>nginx -t # 检查配置⽂件是否正确，也可⽤来定位配置⽂件的位置</li>
+<li>nginx -s quit # 优雅停⽌Nginx</li>
+<li>nginx -s stop # 快速停⽌Nginx</li>
+<li>nginx -s reload # 重新加载配置⽂件</li>
+<li>nginx -s reopen # 重新打开⽇志⽂件</li>
+</ul>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-12-13</span>
+            
+                <span>该篇文章被 Limit Lau</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%85%8D%E7%BD%AE/'>
+                            配置
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2019-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>Rage, rage against the dying of the light🐭</span>
+            
+    
+</div>
+
+
+    
+        
+<link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css">
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js"></script>
+
+        
+<script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js"></script>
+
+    
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>

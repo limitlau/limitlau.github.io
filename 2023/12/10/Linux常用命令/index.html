@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
-    <meta name="description" content="" />
+    <meta name="description" content="Linux系统常用命令" />
     <meta name="hexo-theme-A4" content="v1.6.9" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
     <title>Lau | Learning..</title>
@@ -183,25 +183,11 @@
             
         
             
-                <li><i>
-                    
-                        <u>
-                            <a  href="/categories/">分类</a>
-                        </u>
-                    
-                </i></li>
+                <li><a href="/categories/">分类</a></li>
             
         
             
                 <li><a href="/tags/">标签</a></li>
-            
-        
-            
-                <li><a href="/diary/">抒发</a></li>
-            
-        
-            
-                <li><a href="/about/">关于</a></li>
             
         
     </ul>
@@ -212,34 +198,115 @@
 
                     
                     
-                        <div class="archive-list">
-  <ul class="archive">
-
-    
-    <span>🗂️<i>环境</i></span>
-      
-      
-      
-          
-    
-    
-  
-    
-        <li>
-          <span class="archive-date">2023/07/04</span>
-          <div class="archive-main">
-              <a class="archive-title" href="/2023/07/04/JDK17%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/">Windows中JDK17的安装与卸载</a>
-          </div>
-        </li>
-    
-  
-  </ul>
-</div>
-
- 
-                    
                     
                     <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Linux系统常用命令
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><ol>
+<li><strong>ls</strong> - 列出目录</li>
+<li><strong>pwd</strong> - 打印当前目录</li>
+<li><strong>cd</strong> - 进入指定目录</li>
+<li><strong>mkdir</strong> - 创建目录</li>
+<li><strong>mv</strong> - 移动或重命名文件</li>
+<li><strong>cp</strong> - 复制文件</li>
+<li><strong>rm</strong> - 删除文件或目录</li>
+<li><strong>touch</strong> - 创建空文件</li>
+<li><strong>ln</strong> - 创建指向其他文件的快捷方式</li>
+<li><strong>cat</strong> - 在终端上展示文件内容</li>
+<li><strong>clear</strong> - 清除终端显示</li>
+<li><strong>echo</strong> - 打印命令后的文本</li>
+<li><strong>less</strong> - 在终端上显示分页输出</li>
+<li><strong>man</strong> - 访问所有Linux命令的手册</li>
+<li><strong>uname</strong> - 获取操作系统的基本信息</li>
+<li><strong>whoami</strong> - 获取当前用户名</li>
+<li><strong>tar</strong> - 解压缩文件</li>
+<li><strong>grep</strong> - 在输出中搜索字符串</li>
+<li><strong>head</strong> - 从顶部返回指定的行数</li>
+<li><strong>tail</strong> - 从底部返回指定的行数</li>
+<li><strong>diff</strong> - 找出两个文件之间的差异</li>
+<li><strong>cmp</strong> - 检查两个文件是否相同</li>
+<li><strong>comm</strong> - 结合diff和cmp的功能</li>
+<li><strong>sort</strong> - 在输出时对文件内容进行排序</li>
+<li><strong>export</strong> - 导出Linux环境变量</li>
+<li><strong>zip</strong> - 打成压缩包</li>
+<li><strong>unzip</strong> - 解压缩</li>
+<li><strong>ssh</strong> - SecureSheel命令</li>
+<li><strong>service</strong> - 用于启动和停止服务</li>
+<li><strong>ps</strong> - 显示活动进程</li>
+<li><strong>kill and killall</strong> - 通过进程ID或进程名终止活动进程</li>
+<li><strong>df</strong> - 显示磁盘文件系统信息</li>
+<li><strong>mount</strong> - 挂载文件系统</li>
+<li><strong>chmod</strong> - 修改文件权限</li>
+<li><strong>chown</strong> - 授予文件或文件夹的所有权</li>
+<li><strong>ifconfig</strong> - 显示网络接口和IP地址</li>
+<li><strong>traceroute</strong> - 跟踪到达目的地的所有网络跳数</li>
+<li><strong>wget</strong> - 直接从互联网下载文件</li>
+<li><strong>ufw</strong> - 防火墙命令</li>
+<li><strong>iptables</strong> - 用于与所有其他防火墙实用程序交互的基本防火墙</li>
+<li><strong>apt, pacman, yum, rpm</strong> - 包管理器</li>
+<li><strong>sudo</strong> - 升级权限</li>
+<li><strong>cal</strong> - 查看命令行日历</li>
+<li><strong>alias -</strong> 为经常使用的命令创建自定义快捷方式</li>
+<li><strong>dd</strong> - 主要用于创建可指导的USB闪存盘</li>
+<li><strong>whereis</strong> - 找到命令的二进制文件、源代码和手册页</li>
+<li><strong>whatis</strong> - 查找命令的用途</li>
+<li><strong>top</strong> - 查看活动进程及其系统使用情况</li>
+<li><strong>useradd and usermod</strong> - 添加新用户或更改现有用户数据</li>
+<li><strong>passwd</strong> - 为现有用户创建或更新密码</li>
+</ol>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-12-10</span>
+            
+                <span>该篇文章被 Limit Lau</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Linux/'>
+                            Linux
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%91%BD%E4%BB%A4/'>
+                            命令
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
                     
                     
                     <div class="footer">
